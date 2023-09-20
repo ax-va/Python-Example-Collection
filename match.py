@@ -1,5 +1,5 @@
 # Since Python 3.10
-value = "D"
+value = "X"
 match value:
     case "A":
         print(value)
@@ -9,4 +9,4 @@ match value:
         print(value)
     case other:
         print(other)
-        # D
+        # X

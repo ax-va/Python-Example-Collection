@@ -1,4 +1,4 @@
-# Since Python 3.10
+# since Python 3.10
 value = "X"
 match value:
     case "A":

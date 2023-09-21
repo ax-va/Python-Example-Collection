@@ -66,6 +66,7 @@ logger.warning("Just a random warning event.")
 print(logger.handlers)
 # [<FileHandler /home/delorian/PycharmProjects/Python-Topics-Cui-2023/logs/taskier.log (NOTSET)>, <StreamHandler <stderr> (NOTSET)>]
 
+# Remove the handlers from the logger
 logger.handlers = []
 print(logger.handlers)
 # []

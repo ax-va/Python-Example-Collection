@@ -1,5 +1,5 @@
 """
-The examples are based on the book:
+This example is based on the book:
 "Python How-To: 63 Techniques to Improve Your Python Code",
 Yong Cui, Manning Publications Co., 2023
 """

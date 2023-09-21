@@ -5,6 +5,8 @@ Yong Cui, Manning Publications Co., 2023
 """
 import logging
 
+# # # logging and execution handling
+
 # bad way: multiple distinct loggers in multiple places
 logger0_not_good = logging.Logger("task_app")
 logger1_not_good = logging.Logger("task_app")

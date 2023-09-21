@@ -38,7 +38,7 @@ class Task:
         return task_removed
 
 
-# File handlers can log the records in a file or an interactive console.
+# File handlers can log the records in a file.
 # Specifies the file handler.
 file_handler = logging.FileHandler("logs/taskier.log")
 logger = logging.getLogger(__name__)

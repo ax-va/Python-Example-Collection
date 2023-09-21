@@ -1,7 +1,8 @@
 """
-This example is based on the book:
-"Python How-To: 63 Techniques to Improve Your Python Code",
+This example is based on:
+- "Python How-To: 63 Techniques to Improve Your Python Code",
 Yong Cui, Manning Publications Co., 2023
+- https://docs.python.org/3/library/logging.handlers.html
 """
 import logging
 
@@ -75,7 +76,8 @@ print(logger.hasHandlers())
 
 # You can set multiple file handlers to a logger.
 
-# More information about the handlers: http://mng.bz/E0pD
+# More information about the logging handlers:
+# https://docs.python.org/3/library/logging.handlers.html
 
 # Some notable handlers:
 # - StreamHandler       sends events to the console;

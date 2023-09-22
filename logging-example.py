@@ -75,15 +75,15 @@ print(logger.hasHandlers())
 
 # You can set multiple file handlers to a logger.
 
-# More information about the logging handlers:
-# https://docs.python.org/3/library/logging.handlers.html
-
 # Some notable handlers:
 # - StreamHandler       sends events to the console;
 # - FileHandler         saves events to a file;
 # - SMTPHandler         sends events to an email address;
 # - HTTPHandler         sends events to a web server;
 # - QueueHandler        sends events to a different thread.
+
+# More information about the logging handlers:
+# https://docs.python.org/3/library/logging.handlers.html
 
 # # # Save log records properly
 

@@ -21,7 +21,7 @@ assert logger0_good is logger1_good
 # best practice
 logging.getLogger(__name__)
 
-# # # using files to store application events
+# # # Use files to store application events
 
 
 def check_log_content(filename):
@@ -56,7 +56,7 @@ if task.remove_from_db():
 # log_records = check_log_content("logs/taskier.log")
 # print(log_records)
 
-# # # adding multiple handlers to the logger
+# # # Add multiple handlers to the logger
 
 # Stream handlers can log the records in an interactive console
 stream_handler = logging.StreamHandler()

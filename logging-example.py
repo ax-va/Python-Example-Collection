@@ -1,8 +1,7 @@
 """
 This example is based on:
-- "Python How-To: 63 Techniques to Improve Your Python Code",
-Yong Cui, Manning Publications Co., 2023
-- https://docs.python.org/3/library/logging.handlers.html
+- "Python How-To: 63 Techniques to Improve Your Python Code", Yong Cui, Manning Publications Co., 2023;
+- https://docs.python.org/3/library/logging.handlers.html.
 """
 import logging
 

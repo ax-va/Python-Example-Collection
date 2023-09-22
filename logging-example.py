@@ -85,3 +85,105 @@ print(logger.hasHandlers())
 # - SMTPHandler         sends events to an email address;
 # - HTTPHandler         sends events to a web server;
 # - QueueHandler        sends events to a different thread.
+
+# # # Save log records properly
+
+# # # Categorize application events with levels
+
+# The logging package has five levels
+# (DEBUG, INFO, WARNING, ERROR, and CRITICAL)
+# and a base level NOTSET with a numeric value of 0:
+
+# Numeric values            Logging levels          Intended usages
+# 10                        DEBUG                   for diagnosis of problems
+# 20                        INFO                    informational for expected behaviors
+# 30                        WARNING                 unexpected behaviors that can lead to errors
+# 40                        ERROR                   errors in some functionalities
+# 50                        CRITICAL                serious errors in core functionalities
+
+# When we set a specific level of a logger, all logging records
+# at this level or more serious will be captured by the logger
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.WARNING)
+print(logger.level)
+# 30
+print(logging._levelToName[logger.level])
+# WARNING
+
+
+def logging_messages_all_levels():
+    logger.critical("--Critical message")
+    logger.error("--Error message")
+    logger.warning("--Warning message")
+    logger.info("--Info message")
+    logger.debug("--Debug message")
+
+
+logging_messages_all_levels()
+# In the console:
+# --Critical message
+# --Error message
+# --Warning message
+
+# # # Set a handler’s level
+
+# Set the logger’s level to DEBUG.
+# The logger sends messages to a handler only if the level of logger is less than or equal to the level of handler.
+logger.setLevel(logging.DEBUG)
+
+handler_warning = logging.FileHandler("logs/taskier_warning.log")
+# Add the handler at the WARNING level
+handler_warning.setLevel(logging.WARNING)
+logger.addHandler(handler_warning)
+
+handler_critical = logging.FileHandler("logs/taskier_critical.log")
+# Add the handler at the CRITICAL level
+handler_critical.setLevel(logging.CRITICAL)
+logger.addHandler(handler_critical)
+
+logging_messages_all_levels()
+# In the console:
+# <empty>
+
+# In taskier_warning.log:
+# --Critical message
+# --Error message
+# --Warning message
+
+# In taskier_critical.log:
+# --Critical message
+
+# # # Set formats to the handler
+
+# Retrieve the logger and set the level
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+# Remove previously set handlers
+logger.handlers = []
+
+# Creates a formatter.
+# The formatter uses % style instead of f-strings.
+formatter = logging.Formatter("%(asctime)s [%(levelname)s] – %(name)s - %(message)s")
+
+stream_handler = logging.StreamHandler()
+stream_handler.setLevel(logging.DEBUG)
+# Configures the handler with formatter
+stream_handler.setFormatter(formatter)
+logger.addHandler(stream_handler)
+
+
+def log_some_records():
+    logger.info("App is starting")
+    logger.error("Failed to save the task to the db")
+    logger.info("Created a task by the user")
+    logger.critical("Cannot update the status of the task")
+
+
+log_some_records()
+# 2023-09-22 06:50:25,472 [INFO] – __main__ - App is starting
+# 2023-09-22 06:50:25,472 [ERROR] – __main__ - Failed to save the task to the db
+# 2023-09-22 06:50:25,472 [INFO] – __main__ - Created a task by the user
+# 2023-09-22 06:50:25,472 [CRITICAL] – __main__ - Cannot update the status of the task
+
+# Always format the log records to make it easier to locate pertinent problems

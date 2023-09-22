@@ -6,7 +6,7 @@ Yong Cui, Manning Publications Co., 2023
 """
 import logging
 
-# # # logging and execution handling
+# # # How monitor programs with logging
 
 # bad way: multiple distinct loggers in multiple places
 logger0_not_good = logging.Logger("task_app")

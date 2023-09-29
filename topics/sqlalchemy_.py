@@ -247,7 +247,6 @@ with Session() as session:
     # 2023-09-29 20:27:55,116 INFO sqlalchemy.engine.Engine [cached since 0.009248s ago] ()
     print(data)
     # [<Winner(name='Paul Dirac', category='Physics', year=1933)>, <Winner(name='Marie Curie', category='Chemistry', year=1911)>]
-
 # 2023-09-29 20:27:55,116 INFO sqlalchemy.engine.Engine ROLLBACK
 
 # # # Use metadata to access the database

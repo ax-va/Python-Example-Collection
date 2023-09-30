@@ -172,7 +172,7 @@ with Session() as session:
 
     """
     # In SQLAlchemy 1.x, get a row based on ID number.
-    # Deprecated since SQLAlchemy 2.0.0
+    # Deprecated since SQLAlchemy 2.0.0.
     row = session.query(Winner).get(3)
     print("type of row:", type(row))
     """

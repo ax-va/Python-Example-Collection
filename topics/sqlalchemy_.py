@@ -1,6 +1,7 @@
 """
 This example is based on:
-- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023.
+- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
+- https://docs.sqlalchemy.org/en/20/orm/session_api.html#session-api.
 """
 import sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, desc

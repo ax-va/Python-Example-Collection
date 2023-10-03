@@ -50,12 +50,12 @@ table.create_column('year', db.types.integer)
 db.tables
 # ['winners2']
 
-# Delete table
+# Delete the table
 table.drop()
 db.tables
 # []
 
-# Insert data creating the table automatically
+# Insert data automatically creating the table
 with db as tx:
     tx['winners2'].insert_many(nobel_winners)
 db.tables

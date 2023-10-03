@@ -1,3 +1,8 @@
+"""
+This example is based on:
+- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
+- https://dataset.readthedocs.io/en/latest/.
+"""
 import dataset
 import sqlalchemy
 

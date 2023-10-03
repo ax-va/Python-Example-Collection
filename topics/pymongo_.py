@@ -90,9 +90,9 @@ sudo systemctl stop mongod
 """
 from pymongo import MongoClient
 
-# It is recommended to use constants to avoid working with DBs of the same name
-DB_NOBEL_PRIZE = 'nobel_prize'
-COLL_WINNERS = 'winners'
+# It is recommended to use constants to avoid creating an unwanted database
+DB_NOBEL_PRIZE = 'nobel_prize'  # databas
+COLL_WINNERS = 'winners'  # collection
 
 # list of dictionaries
 nobel_winners = [

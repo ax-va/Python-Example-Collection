@@ -90,7 +90,7 @@ sudo systemctl stop mongod
 """
 from pymongo import MongoClient
 
-# Advised:
+# Advised to avoid working with many tables with same names
 DB_NOBEL_PRIZE = 'nobel_prize'
 COLL_WINNERS = 'winners'
 
@@ -139,6 +139,7 @@ def get_mongo_database(
 
 db = get_mongo_database(DB_NOBEL_PRIZE)
 # Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'nobel_prize')
+
 coll = db[COLL_WINNERS]
 # Collection(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'nobel_prize'), 'winners')
 

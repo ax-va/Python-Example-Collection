@@ -90,7 +90,7 @@ sudo systemctl stop mongod
 """
 from pymongo import MongoClient
 
-# Advised to avoid working with many tables with same names
+# It is recommended to use constants to avoid working with DBs of the same name
 DB_NOBEL_PRIZE = 'nobel_prize'
 COLL_WINNERS = 'winners'
 
@@ -127,8 +127,10 @@ def get_mongo_database(
         username=None,
         password=None,
 ):
-    """ Get named database from MongoDB with/out authentication """
-    # Make Mongo connection with/out authentication
+    """
+    Get named database from MongoDB with(out) authentication .
+    """
+    # Make Mongo connection with(out) authentication
     if username and password:
         mongo_uri = f'mongodb://{username}:{password}@{host}/{db_name}'
         conn = MongoClient(mongo_uri)
@@ -165,4 +167,3 @@ list(coll.find())
 #   'nationality': 'Polish',
 #   'gender': 'female',
 #   'year': 1911}]
-

@@ -88,6 +88,7 @@ sudo dpkg -i mongodb-compass_1.40.2_amd64.deb
 # Stop daemon
 sudo systemctl stop mongod
 """
+import bson
 from pymongo import MongoClient
 
 # It is recommended to use constants to avoid creating an unwanted database
@@ -139,6 +140,25 @@ def get_mongo_database(
     return conn[db_name]
 
 
+def mongo_coll_to_dicts(
+        dbname='test',
+        collname='test',
+        query=None,
+        delete_id=True,
+        **kw,
+):
+    if query is None:
+        # Find all documents in the collection
+        query = {}
+    db = get_mongo_database(dbname, **kw)
+    dict_list = list(db[collname].find(query))
+    if delete_id:
+        # Delete id from the list of dictionaries
+        for entry in dict_list:
+            entry.pop('_id')
+    return dict_list
+
+
 db = get_mongo_database(DB_NOBEL_PRIZE)
 # Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'nobel_prize')
 
@@ -163,6 +183,66 @@ list(coll.find())
 #   'year': 1933},
 #  {'_id': ObjectId('651c42abbab104d494d367cc'),
 #   'category': 'Chemistry',
+#   'name': 'Marie Curie',
+#   'nationality': 'Polish',
+#   'gender': 'female',
+#   'year': 1911}]
+
+# Get the generation time of the ObjectId
+bson.ObjectId().generation_time
+# datetime.datetime(2023, 10, 4, 6, 42, 16, tzinfo=<bson.tz_util.FixedOffset object at 0x7f89d0193650>)
+
+result = coll.find({'category': 'Chemistry'})
+# <pymongo.cursor.Cursor at 0x7f89cac24990>
+list(result)
+# [{'_id': ObjectId('651c42abbab104d494d367cc'),
+#   'category': 'Chemistry',
+#   'name': 'Marie Curie',
+#   'nationality': 'Polish',
+#   'gender': 'female',
+#   'year': 1911}]
+
+# Find all the winners after 1930 using the $gt (greater-than) operator
+list(coll.find({'year': {'$gt': 1930}}))
+# [{'_id': ObjectId('651c42abbab104d494d367cb'),
+#   'category': 'Physics',
+#   'name': 'Paul Dirac',
+#   'nationality': 'British',
+#   'gender': 'male',
+#   'year': 1933}]
+
+# Find all winners after 1930 or all female winners
+list(coll.find({
+    '$or': [
+        {'year': {'$gt': 1930}},
+        {'gender': 'female'},
+    ]
+}))
+# [{'_id': ObjectId('651c42abbab104d494d367cb'),
+#   'category': 'Physics',
+#   'name': 'Paul Dirac',
+#   'nationality': 'British',
+#   'gender': 'male',
+#   'year': 1933},
+#  {'_id': ObjectId('651c42abbab104d494d367cc'),
+#   'category': 'Chemistry',
+#   'name': 'Marie Curie',
+#   'nationality': 'Polish',
+#   'gender': 'female',
+#   'year': 1911}]
+
+mongo_coll_to_dicts(DB_NOBEL_PRIZE, COLL_WINNERS)
+# [{'category': 'Physics',
+#   'name': 'Albert Einstein',
+#   'nationality': 'German and Swiss',
+#   'gender': 'male',
+#   'year': 1921},
+#  {'category': 'Physics',
+#   'name': 'Paul Dirac',
+#   'nationality': 'British',
+#   'gender': 'male',
+#   'year': 1933},
+#  {'category': 'Chemistry',
 #   'name': 'Marie Curie',
 #   'nationality': 'Polish',
 #   'gender': 'female',

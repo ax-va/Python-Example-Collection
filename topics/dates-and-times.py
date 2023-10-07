@@ -14,7 +14,6 @@ d.isoformat()
 # Microseconds are lost.
 
 # Make datetime.datetime using datetime.datetime.strptime
-
 d = datetime.strptime('2022-01-25 01:59:59.999', '%Y-%m-%d %H:%M:%S.%f')
 # datetime.datetime(2022, 1, 25, 1, 59, 59, 999000)
 
@@ -31,7 +30,6 @@ d = datetime.strptime('2022012', '%Y%m%d')
 # # ValueError: unconverted data remains: 01
 
 # Make datetime.datetime using dateutil.parser.parse
-
 d = parser.parse('2022-01-25T22:55:44.738Z')
 # datetime.datetime(2022, 1, 25, 22, 55, 44, 738000, tzinfo=tzutc())
 

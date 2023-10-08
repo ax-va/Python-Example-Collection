@@ -15,7 +15,7 @@ def foo(
         arg2: int = DEFAULT_ARG2,
         arg3: Sequence[int] = DEFAULT_ARG3,
 ) -> None:
-    print("Parameters passed to the function:")
+    print("Arguments passed to the function:")
     print("arg0:", repr(arg0))
     print("arg1:", repr(arg1))
     print("arg2:", repr(arg2))
@@ -94,7 +94,7 @@ if __name__ == "__main__":
 # arg1 = ('a', 'b')
 # arg2 = 0
 # arg3 = (0, 1, 2)
-# Parameters passed to the function:
+# Arguments passed to the function:
 # arg0: 'hello'
 # arg1: ('a', 'b')
 # arg2: 0
@@ -107,7 +107,7 @@ if __name__ == "__main__":
 # arg1 = ['hello1', 'hello2', 'hello3']
 # arg2 = 0
 # arg3 = (0, 1, 2)
-# Parameters passed to the function:
+# Arguments passed to the function:
 # arg0: 'hello'
 # arg1: ['hello1', 'hello2', 'hello3']
 # arg2: 0
@@ -124,7 +124,7 @@ if __name__ == "__main__":
 # arg1 = ['hello1', 'hello2', 'hello3']
 # arg2 = 1
 # arg3 = (0, 1, 2)
-# Parameters passed to the function:
+# Arguments passed to the function:
 # arg0: 'hello'
 # arg1: ['hello1', 'hello2', 'hello3']
 # arg2: 1
@@ -137,7 +137,7 @@ if __name__ == "__main__":
 # arg1 = ['hello1', 'hello2', 'hello3']
 # arg2 = 1
 # arg3 = [1, 10, 100]
-# Parameters passed to the function:
+# Arguments passed to the function:
 # arg0: 'hello'
 # arg1: ['hello1', 'hello2', 'hello3']
 # arg2: 1
@@ -150,7 +150,7 @@ if __name__ == "__main__":
 # arg1 = ['hello1', 'hello2', 'hello3']
 # arg2 = 1
 # arg3 = []
-# Parameters passed to the function:
+# Arguments passed to the function:
 # arg0: 'hello'
 # arg1: ['hello1', 'hello2', 'hello3']
 # arg2: 1

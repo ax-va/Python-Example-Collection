@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     # Add optional arguments
     parser.add_argument(
-        "-a", "--arg1",
+        "-a11", "--arg1",
         nargs="+",
         default=DEFAULT_ARG1,
         type=str,
@@ -47,7 +47,7 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "-b", "--arg2",
+        "-a2", "--arg2",
         type=int,
         default=DEFAULT_ARG2,
         choices=[0, 1, 2],
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "-c", "--arg3",
+        "-a3", "--arg3",
         nargs="*",
         default=DEFAULT_ARG3,
         type=int,
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     foo(**kwargs)
 
 # python argparse_.py -h
-# usage: argparse_.py [-h] [-a ARG1 [ARG1 ...]] [-b {0,1,2}] [-c [ARG3 ...]] arg0
+# usage: argparse_.py [-h] [-a1 ARG1 [ARG1 ...]] [-a2 {0,1,2}] [-a3 [ARG3 ...]] arg0
 #
 # Execution of the foo function
 #
@@ -80,11 +80,11 @@ if __name__ == "__main__":
 #
 # options:
 #   -h, --help            show this help message and exit
-#   -a ARG1 [ARG1 ...], --arg1 ARG1 [ARG1 ...]
+#   -a1 ARG1 [ARG1 ...], --arg1 ARG1 [ARG1 ...]
 #                         argument arg1 (default: ('a', 'b'))
-#   -b {0,1,2}, --arg2 {0,1,2}
+#   -a2 {0,1,2}, --arg2 {0,1,2}
 #                         argument arg2 (default: 0)
-#   -c [ARG3 ...], --arg3 [ARG3 ...]
+#   -a3 [ARG3 ...], --arg3 [ARG3 ...]
 #                         argument arg3 (default: (0, 1, 2))
 
 # python argparse_.py "hello"
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 # arg2: 0
 # arg3: (0, 1, 2)
 
-# python argparse_.py "hello" -a "hello1" "hello2" "hello3"
+# python argparse_.py "hello" -a1 "hello1" "hello2" "hello3"
 # args: Namespace(arg0='hello', arg1=['hello1', 'hello2', 'hello3'], arg2=0, arg3=(0, 1, 2))
 # Calling the script with arguments:
 # arg0 = 'hello'
@@ -113,11 +113,11 @@ if __name__ == "__main__":
 # arg2: 0
 # arg3: (0, 1, 2)
 
-# python argparse_.py "hello" -a "hello1" "hello2" "hello3" -b 15
-# usage: argparse_.py [-h] [-a ARG1 [ARG1 ...]] [-b {0,1,2}] [-c ARG3 [ARG3 ...]] arg0
-# argparse_.py: error: argument -b/--arg2: invalid choice: 15 (choose from 0, 1, 2)
+# python argparse_.py "hello" -a1 "hello1" "hello2" "hello3" -a2 15
+# usage: argparse_.py [-h] [-a1 ARG1 [ARG1 ...]] [-a2 {0,1,2}] [-a3 ARG3 [ARG3 ...]] arg0
+# argparse_.py: error: argument -a2/--arg2: invalid choice: 15 (choose from 0, 1, 2)
 
-# python argparse_.py "hello" -a "hello1" "hello2" "hello3" -b 1
+# python argparse_.py "hello" -a1 "hello1" "hello2" "hello3" -a2 1
 # args: Namespace(arg0='hello', arg1=['hello1', 'hello2', 'hello3'], arg2=1, arg3=(0, 1, 2))
 # Calling the script with arguments:
 # arg0 = 'hello'
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 # arg2: 1
 # arg3: (0, 1, 2)
 
-# python argparse_.py "hello" -a "hello1" "hello2" "hello3" -b 1 --arg3 1 10 100
+# python argparse_.py "hello" -a1 "hello1" "hello2" "hello3" -a2 1 --arg3 1 10 100
 # args: Namespace(arg0='hello', arg1=['hello1', 'hello2', 'hello3'], arg2=1, arg3=[1, 10, 100])
 # Calling the script with arguments:
 # arg0 = 'hello'
@@ -143,7 +143,7 @@ if __name__ == "__main__":
 # arg2: 1
 # arg3: [1, 10, 100]
 
-# python argparse_.py "hello" -a "hello1" "hello2" "hello3" -b 1 -c
+# python argparse_.py "hello" -a1 "hello1" "hello2" "hello3" -a2 1 -a3
 # args: Namespace(arg0='hello', arg1=['hello1', 'hello2', 'hello3'], arg2=1, arg3=[])
 # Calling the script with arguments:
 # arg0 = 'hello'

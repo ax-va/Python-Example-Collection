@@ -70,6 +70,8 @@ if __name__ == "__main__":
         print(key, "=", repr(value))
     foo(**kwargs)
 
+# in the terminal / in the command line:
+
 # python argparse_.py -h
 # usage: argparse_.py [-h] [-a1 ARG1 [ARG1 ...]] [-a2 {0,1,2}] [-a3 [ARG3 ...]] arg0
 #

@@ -3,6 +3,7 @@ The argparse package:
 https://docs.python.org/3/library/argparse.html
 """
 from typing import Sequence
+from distutils.util import strtobool  # Python 3.0-3.11
 
 DEFAULT_ARG1 = ("a", "b")
 DEFAULT_ARG2 = 0
@@ -14,12 +15,14 @@ def foo(
         arg1: Sequence[str] = DEFAULT_ARG1,
         arg2: int = DEFAULT_ARG2,
         arg3: Sequence[int] = DEFAULT_ARG3,
+        arg4: bool = False
 ) -> None:
     print("Arguments passed to the function:")
     print("arg0:", repr(arg0))
     print("arg1:", repr(arg1))
     print("arg2:", repr(arg2))
     print("arg3:", repr(arg3))
+    print("arg4:", repr(arg4))
 
 
 if __name__ == "__main__":
@@ -60,6 +63,12 @@ if __name__ == "__main__":
         default=DEFAULT_ARG3,
         type=int,
         help="argument arg3",
+    )
+
+    parser.add_argument(
+        "-a4", "--arg4",
+        type=strtobool,
+        help="argument arg4"
     )
 
     args = parser.parse_args()

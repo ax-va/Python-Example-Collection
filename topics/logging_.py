@@ -22,7 +22,6 @@ logging.getLogger(__name__)
 
 # # # Use files to store application events
 
-
 def check_log_content(filename):
     with open(filename) as file:
         return file.read()

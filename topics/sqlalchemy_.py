@@ -40,7 +40,7 @@ nobel_winners = [
 # Create an engine for working with the database
 engine = create_engine('sqlite:///sqlite-databases/nobel_winners.db', echo=True)
 
-# # # Use declarative mapping to work with tables
+# # # Use object-relational mapping (ORM)
 
 # Use Base to define various tables
 Base = declarative_base()

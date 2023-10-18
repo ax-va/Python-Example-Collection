@@ -20,7 +20,6 @@ https://requests.readthedocs.io/en/latest/user/advanced/#transport-adapters
 import json
 import requests
 
-
 print(requests.__version__)
 # 2.31.0
 

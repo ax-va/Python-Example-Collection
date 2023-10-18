@@ -48,9 +48,9 @@ Base = declarative_base()
 
 class Winner(Base):
     """
-    Declarative mapping:
-    This class will correspond to the table and the instances
-    of this class will correspond to the rows of the table.
+    ORM: This class will correspond to the table, the instances
+    of this class will correspond to the rows of the table,
+    and the class attributes correspond to the columns of the table.
     """
     __tablename__ = 'winners'
     id = Column(Integer, primary_key=True)

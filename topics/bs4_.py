@@ -223,7 +223,7 @@ get_column_titles(table)
 
 def get_nobel_winners(table: bs4.element.Tag) -> List[Dict]:
     column_titles = get_column_titles(table)
-    column_titles_after_year = column_titles[1:]
+    categories = column_titles[1:]  # column titles after year
     winners = []
     for row in table.select('tr')[1:-1]:  # without the first and last rows in the response.content
         year = int(row.select_one('td').text)  # only year
@@ -234,7 +234,7 @@ def get_nobel_winners(table: bs4.element.Tag) -> List[Dict]:
                     winners.append(
                         {
                             'year': year,
-                            'category': column_titles_after_year[i]['name'],
+                            'category': categories[i]['name'],
                             'name': winner.text,
                             'link': winner.attrs['href'],
                         }

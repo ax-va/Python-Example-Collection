@@ -141,7 +141,7 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE_URL = 'http://en.wikipedia.org'
-# Wikipedia rejects the request unless a 'User-Agent' attribute is added to the http header
+# Wikipedia rejects requests unless a 'User-Agent' attribute is added to the http header
 HEADERS = {'User-Agent': 'Mozilla/5.0'}
 
 response = requests.get(

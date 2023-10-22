@@ -2,6 +2,16 @@
 This example is based on:
 - "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
 - https://docs.sqlalchemy.org/en/20/orm/session_api.html#session-api.
+
+You can use DBVisualizer to work with DB additionally.
+- Download DBVisualizer for Linux:
+https://www.dbvis.com/download/
+- Install:
+~/Downloads$ sudo dpkg -i dbvis_linux_23_2_5.deb
+- Go to dir:
+cd /opt/DbVisualizer
+- Start:
+./dbvis
 """
 import sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, desc

@@ -3,6 +3,7 @@ This example is based on:
 - "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
 - https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 - https://requests.readthedocs.io/en/latest/user/quickstart/
+- https://requests-cache.readthedocs.io/en/latest/user_guide.html
 
 Upgrade certifi:
 pip install --upgrade certifi
@@ -19,6 +20,7 @@ https://requests.readthedocs.io/en/latest/user/advanced/#transport-adapters
 """
 import json
 import requests
+import requests_cache
 
 print(requests.__version__)
 # 2.31.0
@@ -80,11 +82,41 @@ headers={'User-Agent': 'Mozilla/5.0'}
 url = RESTCOUNTRIES_BASE_URL + "/currency" + "/usd"
 response = requests.get(url=url, headers=headers)
 #  <Response [200]>
+len(response.text)
+# 66180
 
 url = RESTCOUNTRIES_BASE_URL + "/all"
 response = requests.get(url=url, headers=headers)
 # <Response [200]>
+len(response.text)
+# 776650
 
 # Save data in JSON
 with open('json-files/world-country-data.json', 'w') as json_file:
     json.dump(response.json(), json_file)
+
+# # # caching requests
+
+# requests-cache uses "monkey patching" to dynamically replace parts of the requests API at runtime.
+# General usage:
+# requests_cache.install_cache()
+# Use requests as usual.
+# requests_cache.uninstall_cache()
+# The cache backend can be sqlite, memory, mongdb, redis, ...
+
+# Create a cache named 'nobel_pages' with a sqlite backend and pages that expire in two hours (7,200 s)
+session = requests_cache.CachedSession(
+    cache_name='sqlite-databases/requests_cache.db',
+    backend='sqlite',
+    expire_after=7200,
+)
+response = session.get(url=url, headers=headers)  # Added to cache
+len(response.text)
+# 776650
+response = session.get(url=url, headers=headers)  # Got from cache
+len(response.text)
+# 776650
+
+for response in session.cache.filter():
+    print(len(response.text))
+# 776650

@@ -3,7 +3,7 @@ Lightweight scrapping by Beautiful Soup and lxml
 
 Scrapping the table in https://en.wikipedia.org/wiki/List_of_Nobel_laureates
 
-The DOM of the Wiki table:
+The source of the Wiki table:
 
 <table class="wikitable sortable jquery-tablesorter">
     <thead>

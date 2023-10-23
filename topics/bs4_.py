@@ -16,45 +16,7 @@ The DOM of the Wiki table:
                     Physics
                 </a>
             </th>
-            <th width="18%" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">
-                <a href="/wiki/List_of_Nobel_laureates_in_Chemistry" title="List of Nobel laureates in Chemistry">
-                    Chemistry
-                </a>
-            </th>
-            <th width="17%" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">
-                <a href="/wiki/List_of_Nobel_laureates_in_Physiology_or_Medicine" title="List of Nobel laureates in Physiology or Medicine">
-                    Physiology
-                    <br>
-                    or Medicine
-                </a>
-            </th>
-            <th width="16%" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">
-                <a href="/wiki/List_of_Nobel_laureates_in_Literature" title="List of Nobel laureates in Literature">
-                    Literature
-                </a>
-            </th>
-            <th width="16%" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">
-                <a href="/wiki/List_of_Nobel_Peace_Prize_laureates" title="List of Nobel Peace Prize laureates">
-                    Peace
-                </a>
-            </th>
-            <th width="15%" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">
-                <a href="/wiki/List_of_Nobel_laureates_in_Economics" class="mw-redirect" title="List of Nobel laureates in Economics">
-                    Economics
-                </a>
-                <br>
-                (The Sveriges Riksbank Prize)
-                <sup id="cite_ref-13" class="reference">
-                    <a href="#cite_note-13">
-                        [13]
-                    </a>
-                </sup>
-                <sup id="cite_ref-14" class="reference">
-                    <a href="#cite_note-14">
-                        [a]
-                    </a>
-                </sup>
-            </th>
+            ...
         </tr>
     </thead>
     <tbody>
@@ -73,64 +35,7 @@ The DOM of the Wiki table:
                     </span>
                 </span>
             </td>
-            <td>
-                <span data-sort-value="Hoff, Jacobus Henricus van 't">
-                    <span class="vcard">
-                        <span class="fn">
-                            <a href="/wiki/Jacobus_Henricus_van_%27t_Hoff" title="Jacobus Henricus van 't Hoff">
-                                Jacobus Henricus van 't Hoff
-                            </a>
-                        </span>
-                    </span>
-                </span>
-            </td>
-            <td>
-                <span data-sort-value="von Behring, Emil">
-                    <span class="vcard">
-                        <span class="fn">
-                            <a href="/wiki/Emil_von_Behring" title="Emil von Behring">
-                                Emil von Behring
-                            </a>
-                        </span>
-                    </span>
-                </span>
-            </td>
-            <td>
-                <span data-sort-value="Prudhomme, Sully">
-                    <span class="vcard">
-                        <span class="fn">
-                            <a href="/wiki/Sully_Prudhomme" title="Sully Prudhomme">
-                                Sully Prudhomme
-                            </a>
-                        </span>
-                    </span>
-                </span>
-            </td>
-            <td>
-                <span data-sort-value="Dunant, Henry">
-                    <span class="vcard">
-                        <span class="fn">
-                            <a href="/wiki/Henry_Dunant" title="Henry Dunant">
-                                Henry Dunant
-                            </a>
-                        </span>
-                    </span>
-                </span>
-                ;
-                <br>
-                <span data-sort-value="Passy, Frédéric">
-                    <span class="vcard">
-                        <span class="fn">
-                            <a href="/wiki/Fr%C3%A9d%C3%A9ric_Passy" title="Frédéric Passy">
-                                Frédéric Passy
-                            </a>
-                        </span>
-                    </span>
-                </span>
-            </td>
-            <td rowspan="68" align="center" bgcolor="eeeeee">
-                —
-            </td>
+            ...
         </tr>
 ...
 """

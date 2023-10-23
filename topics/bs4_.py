@@ -80,7 +80,7 @@ len(soup.select('table.sortable.wikitable'))
 str(soup.select('table.sortable.wikitable')[0])[:100]
 # '<table class="wikitable sortable">\n<tbody><tr>\n<th>Year\n</th>\n<th width="17%"><a href="/wiki/List_of'
 
-# Find only the first tag that matches the selector
+# Find the first tag that matches the selector
 table = soup.select_one('table.sortable.wikitable')
 type(table)
 # bs4.element.Tag

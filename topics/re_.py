@@ -5,7 +5,7 @@ This example of regular expressions is based on:
 """
 import re
 
-# # # regular expressions - regex
+# # # regular expressions - regex (Python 3.11)
 
 # There are two approaches: the OOP one and the functional one.
 

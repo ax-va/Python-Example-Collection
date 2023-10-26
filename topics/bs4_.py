@@ -1,5 +1,6 @@
 """
-Lightweight scrapping by Beautiful Soup and lxml
+This example of lightweight scrapping by Beautiful Soup and lxml is based on:
+- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023.
 
 Scrapping the table in https://en.wikipedia.org/wiki/List_of_Nobel_laureates
 
@@ -120,8 +121,7 @@ get_column_titles(table)
 # [{'name': 'Year\n', 'href': None},
 #  {'name': 'Physics', 'href': '/wiki/List_of_Nobel_laureates_in_Physics'},
 #  {'name': 'Chemistry', 'href': '/wiki/List_of_Nobel_laureates_in_Chemistry'},
-#  {'name': 'Physiologyor Medicine',
-#   'href': '/wiki/List_of_Nobel_laureates_in_Physiology_or_Medicine'},
+#  {'name': 'Physiologyor Medicine', 'href': '/wiki/List_of_Nobel_laureates_in_Physiology_or_Medicine'},
 #  {'name': 'Literature', 'href': '/wiki/List_of_Nobel_laureates_in_Literature'},
 #  {'name': 'Peace', 'href': '/wiki/List_of_Nobel_Peace_Prize_laureates'},
 #  {'name': 'Economics', 'href': '/wiki/List_of_Nobel_laureates_in_Economics'}]
@@ -177,3 +177,84 @@ winners[-3:]
 #   'category': 'Economics',
 #   'name': 'Claudia Goldin',
 #   'link': '/wiki/Claudia_Goldin'}]
+
+
+def add_winner_nationality(winner: dict) -> None:
+    """
+    Scrape biographic data from the winner's wikipedia page.
+    """
+    print(f"Scrapping the nationality of {winner['name']}...")
+    response = requests.get('http://en.wikipedia.org' + winner['link'], headers=HEADERS)
+    content = response.content.decode('utf-8')
+    soup = BeautifulSoup(content)
+    attr_rows = soup.select('table.infobox tr')
+    for tr in attr_rows:
+        try:
+            attribute = tr.select_one('th').text.lower()
+            if attribute in ["nationality", "citizenship"]:
+                winner["nationality"] = tr.select_one('td').text
+        except AttributeError:
+            pass
+
+
+for winner in winners[:10]:
+    add_winner_nationality(winner)
+# Scrapping the nationality of Wilhelm Röntgen...
+# Scrapping the nationality of Jacobus Henricus van 't Hoff...
+# Scrapping the nationality of Emil von Behring...
+# Scrapping the nationality of Sully Prudhomme...
+# Scrapping the nationality of Henry Dunant...
+# Scrapping the nationality of Frédéric Passy...
+# Scrapping the nationality of Hendrik Lorentz...
+# Scrapping the nationality of Pieter Zeeman...
+# Scrapping the nationality of Emil Fischer...
+# Scrapping the nationality of Ronald Ross...
+
+winners[:10]
+#  [{'year': 1901,
+#   'category': 'Physics',
+#   'name': 'Wilhelm Röntgen',
+#   'link': '/wiki/Wilhelm_R%C3%B6ntgen',
+#   'nationality': '\nPrussian (1845–1848)\nStateless (1848–1888)\nGerman (1888–1923)[1]\n'},
+#  {'year': 1901,
+#   'category': 'Chemistry',
+#   'name': "Jacobus Henricus van 't Hoff",
+#   'link': '/wiki/Jacobus_Henricus_van_%27t_Hoff',
+#   'nationality': 'Dutch'},
+#  {'year': 1901,
+#   'category': 'Physiologyor Medicine',
+#   'name': 'Emil von Behring',
+#   'link': '/wiki/Emil_von_Behring',
+#   'nationality': 'German'},
+#  {'year': 1901,
+#   'category': 'Literature',
+#   'name': 'Sully Prudhomme',
+#   'link': '/wiki/Sully_Prudhomme',
+#   'nationality': 'French'},
+#  {'year': 1901,
+#   'category': 'Peace',
+#   'name': 'Henry Dunant',
+#   'link': '/wiki/Henry_Dunant',
+#   'nationality': 'SwissFrench (from 1859)[1][2][3]'},
+#  {'year': 1901,
+#   'category': 'Peace',
+#   'name': 'Frédéric Passy',
+#   'link': '/wiki/Fr%C3%A9d%C3%A9ric_Passy'},
+#  {'year': 1902,
+#   'category': 'Physics',
+#   'name': 'Hendrik Lorentz',
+#   'link': '/wiki/Hendrik_Lorentz'},
+#  {'year': 1902,
+#   'category': 'Physics',
+#   'name': 'Pieter Zeeman',
+#   'link': '/wiki/Pieter_Zeeman'},
+#  {'year': 1902,
+#   'category': 'Chemistry',
+#   'name': 'Emil Fischer',
+#   'link': '/wiki/Emil_Fischer',
+#   'nationality': 'German'},
+#  {'year': 1902,
+#   'category': 'Physiologyor Medicine',
+#   'name': 'Ronald Ross',
+#   'link': '/wiki/Ronald_Ross',
+#   'nationality': 'British'}]

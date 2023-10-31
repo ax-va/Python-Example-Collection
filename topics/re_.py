@@ -2,6 +2,9 @@
 This example of regular expressions is based on:
 - "Python How-To: 63 Techniques to Improve Your Python Code", Yong Cui, Manning Publications Co., 2023;
 - https://docs.python.org/3/howto/regex.html.
+
+Test Python regexes:
+http://www.pyregex.com/
 """
 import re
 
@@ -112,6 +115,11 @@ for pattern in test_patterns:
 # - individual characters: [abcxyz]
 # - a range of characters: [a-z], [A-Z]
 # - combined different ranges of characters: [a-dw-z]
+
+# For example, you could use
+# r'[\w\.-]+@gmail.com'
+# if you were searching for only Gmail addresses
+# (\. is for a dot).
 
 patterns = ["\d", "\D", "\s", "\S", "\w", "\W", ".", "[lmn]"]
 test_text = "#1$2m_ M\t ä \n lm ml"

@@ -2,7 +2,7 @@ import re
 
 from typing import Any, Dict
 import scrapy
-from scrapy import Selector
+from scrapy import Selector, Request
 from scrapy.http.response import Response
 
 WIKIPEDIA_DOMAIN = "en.wikipedia.org"
@@ -46,7 +46,7 @@ class NobelWinnersSpider(scrapy.Spider):
     allowed_domains = [WIKIPEDIA_DOMAIN]
     start_urls = [NOBEL_WINNERS_BY_COUNTRY_URL]
 
-    def parse(self, response: Response, **kwargs: Any) -> Any:
+    def parse(self, response: Response, **kwargs: Any) -> Request:
         country_item_list = response.xpath('//ol[1]/../h3')
         for country_item in country_item_list:
             winner_item_list = country_item.xpath('following-sibling::ol[1]/li')
@@ -61,7 +61,7 @@ class NobelWinnersSpider(scrapy.Spider):
                 request.meta['item'] = NobelWinnerItem(**winner_data)
                 yield request
 
-    def parse_personal_page(self, response: Response):
+    def parse_personal_page(self, response: Response) -> Request:
         """
         Handles the callback from the biography-link request.
         """
@@ -77,7 +77,7 @@ class NobelWinnersSpider(scrapy.Spider):
             request.meta['item'] = item
             yield request
 
-    def parse_wikidata(self, response: Response):
+    def parse_wikidata(self, response: Response) -> dict:
         """
         Parses wikidata to get additional data.
         """

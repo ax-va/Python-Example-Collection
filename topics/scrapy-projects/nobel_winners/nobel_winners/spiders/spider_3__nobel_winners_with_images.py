@@ -1,8 +1,9 @@
-import re
-
-from typing import Any, Dict
+"""
+Installed Pillow is required.
+"""
+from typing import Any
 import scrapy
-from scrapy import Selector, Request
+from scrapy import Request
 from scrapy.http.response import Response
 
 WIKIPEDIA_DOMAIN = "en.wikipedia.org"
@@ -13,8 +14,6 @@ NOBEL_WINNERS_BY_COUNTRY_URL = BASE_URL + "/wiki/List_of_Nobel_laureates_by_coun
 class NobelWinnerItem(scrapy.Item):
     """
     Contains the fields for the scraped data.
-
-    Installed Pillow is required.
     """
     name = scrapy.Field()
     link = scrapy.Field()
@@ -23,20 +22,18 @@ class NobelWinnerItem(scrapy.Item):
     images = scrapy.Field()  # full information about images
 
 
-class NobelWinnersSpiderForPhotos(scrapy.Spider):
+class NobelWinnersSpiderForImages(scrapy.Spider):
     """
     Scrapes the Nobel-winners data.
-
-    Installed Pillow is required.
     """
-    name = 'Nobel_winners_with_photos'
+    name = 'Nobel_winners_with_images'
     allowed_domains = [WIKIPEDIA_DOMAIN]
     start_urls = [NOBEL_WINNERS_BY_COUNTRY_URL]
     custom_settings = {
         'ITEM_PIPELINES': {
-            'nobel_winners.pipelines.NobelPhotosPipeline': 300,
+            'nobel_winners.pipelines.NobelWinnerImagesPipeline': 300,
         },
-        'IMAGES_STORE': '/home/delorian/PycharmProjects/Python-Topics-Cui-2023/topics/scrapy-projects/nobel_winners/images',
+        'IMAGES_STORE': 'images',
     }
 
     def parse(self, response: Response, **kwargs: Any) -> Request:

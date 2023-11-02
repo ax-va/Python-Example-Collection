@@ -143,4 +143,7 @@
 
 # $ head Nobel_winners_by_request_chains.json
 
-# $ scrapy crawl Nobel_winners_with_photos -o Nobel_winners_with_photos.json
+# $ scrapy crawl Nobel_winners_with_images -o Nobel_winners_with_images.json
+
+# List the content of the 'images' folder:
+# $ tree images

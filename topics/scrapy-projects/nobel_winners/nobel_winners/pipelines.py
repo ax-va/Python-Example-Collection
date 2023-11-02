@@ -28,7 +28,7 @@ class DroppingNonPersons:
         return item
 
 
-class NobelPhotosPipeline(ImagesPipeline):
+class NobelWinnerImagesPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
         for image_url in item['image_urls']:
             yield scrapy.Request(image_url)

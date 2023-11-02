@@ -38,11 +38,11 @@ class NobelWinnerItem(scrapy.Item):
     wikidata_code = scrapy.Field()
 
 
-class NobelWinnersSpider(scrapy.Spider):
+class NobelWinnersSpiderWithRequestChain(scrapy.Spider):
     """
-    Scrapes the country and link text of the Nobel-winners.
+    Scrapes the Nobel-winner data.
     """
-    name = 'Nobel_winners_with_more_info'
+    name = 'Nobel_winners_with_request_chain'
     allowed_domains = [WIKIPEDIA_DOMAIN]
     start_urls = [NOBEL_WINNERS_BY_COUNTRY_URL]
 
@@ -55,13 +55,13 @@ class NobelWinnersSpider(scrapy.Spider):
                 winner_data = self._process_winner_li(winner_item, country[0])
                 request = scrapy.Request(  # Make a request to the winner’s biography page
                     winner_data['link'],
-                    callback=self.parse_personal_page,  # Set the callback function to handle the response
+                    callback=self.parse_biography,  # Set the callback function to handle the response
                     dont_filter=True
                 )
                 request.meta['item'] = NobelWinnerItem(**winner_data)
                 yield request
 
-    def parse_personal_page(self, response: Response) -> Request:
+    def parse_biography(self, response: Response) -> Request:
         """
         Handles the callback from the biography-link request.
         """

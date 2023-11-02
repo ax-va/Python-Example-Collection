@@ -4,10 +4,8 @@ This Scrapy example is based on:
 - https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#downloader-middleware;
 - https://doc.scrapy.org/en/latest/topics/item-pipeline.html;
 - https://doc.scrapy.org/en/latest/topics/media-pipeline.html;
-- https://doc.scrapy.org/en/latest/topics/media-pipeline.html#using-the-images-pipeline.
-
-Comparison of CSS selectors and Xpaths:
-https://devhints.io/xpath
+- https://doc.scrapy.org/en/latest/topics/media-pipeline.html#using-the-images-pipeline;
+- Xpath: https://devhints.io/xpath.
 
 Installed Pillow is required.
 """

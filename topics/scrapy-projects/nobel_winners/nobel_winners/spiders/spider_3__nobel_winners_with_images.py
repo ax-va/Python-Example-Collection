@@ -6,7 +6,7 @@ This Scrapy example is based on:
 - https://doc.scrapy.org/en/latest/topics/media-pipeline.html;
 - https://doc.scrapy.org/en/latest/topics/media-pipeline.html#using-the-images-pipeline.
 
-Comparision of CSS selectors and Xpaths:
+Comparison of CSS selectors and Xpaths:
 https://devhints.io/xpath
 
 Installed Pillow is required.

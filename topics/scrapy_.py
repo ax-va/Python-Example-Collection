@@ -20,15 +20,15 @@ https://devhints.io/xpath
 #     scrapy genspider example example.com
 
 # - scrapy-projects
-# |- nobel_winners
-#  |- spiders
-#   |- __init__.py
-#  |- __init__.py
-#  |- items.py
-#  |- middlewares.py
-#  |- pipelines.py
-#  |-settings.py
-# |- scrapy.cfg
+#   |- nobel_winners
+#      |- spiders
+#         |- __init__.py
+#      |- __init__.py
+#      |- items.py
+#      |- middlewares.py
+#      |- pipelines.py
+#      |-settings.py
+#   |- scrapy.cfg
 
 # Countries with the Nobel Prize winners:
 # https://en.wikipedia.org/wiki/List_of_Nobel_laureates_by_country

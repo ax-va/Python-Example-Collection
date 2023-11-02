@@ -1,3 +1,14 @@
+"""
+This Scrapy example is based on:
+- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
+- https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#downloader-middleware;
+- https://doc.scrapy.org/en/latest/topics/item-pipeline.html;
+- https://doc.scrapy.org/en/latest/topics/media-pipeline.html;
+- https://doc.scrapy.org/en/latest/topics/media-pipeline.html#using-the-images-pipeline.
+
+Comparision of CSS selectors and Xpaths:
+https://devhints.io/xpath
+"""
 import re
 
 from typing import Any, Dict

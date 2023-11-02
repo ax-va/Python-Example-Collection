@@ -1,3 +1,8 @@
+# https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#downloader-middleware
+# https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+# https://doc.scrapy.org/en/latest/topics/media-pipeline.html
+# https://doc.scrapy.org/en/latest/topics/media-pipeline.html#using-the-images-pipeline
+
 # Comparision of CSS selectors and Xpaths:
 # https://devhints.io/xpath
 
@@ -134,16 +139,8 @@
 # {"country": "Armenia", "name": "Ardem Patapoutian", "link_text": "Ardem Patapoutian ,  born in Lebanon , Physiology or Medicine, 2021"},
 # {"country": "Australia", "name": "Brian Schmidt", "link_text": "Brian Schmidt ,  born in the United States , Physics, 2011"},
 
-# $ scrapy crawl Nobel_winners_with_request_chain -o Nobel_winners_with_request_chain.json
+# $ scrapy crawl Nobel_winners_by_request_chains -o Nobel_winners_by_request_chains.json
 
-# $ head Nobel_winners_with_request_chain.json
-# [
-# {"link": "https://en.wikipedia.org/wiki/Muhammad_Yunus", "name": "Muhammad Yunus", "year": 2006, "category": "Peace", "country": "Bangladesh", "born_in": null, "text": "Muhammad Yunus , Peace, 2006", "wikidata_code": "Q43969", "date_of_birth": "28 June 1940", "place_of_birth": "Chittagong", "gender": "male"},
-# {"link": "https://en.wikipedia.org/wiki/Richard_Adolf_Zsigmondy", "name": "Richard Adolf Zsigmondy", "year": 1925, "category": "Chemistry", "country": "Austria", "born_in": null, "text": "Richard Adolf Zsigmondy , Chemistry, 1925", "wikidata_code": "Q78481", "date_of_birth": "1 April 1865", "date_of_death": "23 September 1929", "place_of_birth": "Vienna", "place_of_death": "Göttingen", "gender": "male"},
-# {"link": "https://en.wikipedia.org/wiki/Fritz_Pregl", "name": "Fritz Pregl", "year": 1923, "category": "Chemistry", "country": "Austria", "born_in": null, "text": "Fritz Pregl ,  born in Austria-Hungary, now Slovenia , Chemistry, 1923", "wikidata_code": "Q78482", "date_of_birth": "3 September 1869", "date_of_death": "13 December 1930", "place_of_birth": "Ljubljana", "place_of_death": "Graz", "gender": "male"},
-# {"link": "https://en.wikipedia.org/wiki/Carl_Ferdinand_Cori", "name": "Carl Ferdinand Cori", "year": 1947, "category": "Physiology or Medicine", "country": "Austria", "born_in": null, "text": "Carl Ferdinand Cori ,  born in Austria , Physiology or Medicine, 1947", "wikidata_code": "Q78501", "date_of_birth": "5 December 1896", "date_of_death": "20 October 1984", "place_of_birth": "Prague", "place_of_death": "Cambridge", "gender": "male"},
-# {"link": "https://en.wikipedia.org/wiki/Gerty_Cori", "name": "Gerty Cori", "year": 1947, "category": "Physiology or Medicine", "country": "Austria", "born_in": null, "text": "Gerty Cori ,  born in Austria , Physiology or Medicine, 1947", "wikidata_code": "Q204733", "date_of_birth": "15 August 1896", "date_of_death": "26 October 1957", "place_of_birth": "Prague", "place_of_death": "Glendale", "gender": "female"},
-# {"link": "https://en.wikipedia.org/wiki/Wolfgang_Pauli", "name": "Wolfgang Pauli", "year": 1945, "category": "Physics", "country": "Austria", "born_in": null, "text": "Wolfgang Pauli , Physics, 1945", "wikidata_code": "Q65989", "date_of_birth": "25 April 1900", "date_of_death": "15 December 1958", "place_of_birth": "Vienna", "place_of_death": "Zürich", "gender": "male"},
-# {"link": "https://en.wikipedia.org/wiki/Friedrich_Hayek", "name": "Friedrich Hayek", "year": 1974, "category": "Economics", "country": "Austria", "born_in": null, "text": "Friedrich Hayek , Economics, 1974", "wikidata_code": "Q1325", "date_of_birth": "8 May 1899", "date_of_death": "23 March 1992", "place_of_birth": "Vienna", "place_of_death": "Freiburg im Breisgau", "gender": "male"},
-# {"link": "https://en.wikipedia.org/wiki/David_J._Thouless", "name": "David J. Thouless", "year": 2016, "category": "Physics", "country": "United Kingdom", "born_in": null, "text": "David J. Thouless , Physics, 2016", "wikidata_code": "Q726394", "date_of_birth": "21 September 1934", "date_of_death": "6 April 2019", "place_of_birth": "Bearsden", "place_of_death": "Cambridge", "gender": "male"},
-# {"link": "https://en.wikipedia.org/wiki/F._Duncan_M._Haldane", "name": "F. Duncan M. Haldane", "year": 2016, "category": "Physics", "country": "United Kingdom", "born_in": null, "text": "F. Duncan M. Haldane , Physics, 2016", "wikidata_code": "Q1002250", "date_of_birth": "14 September 1951", "place_of_birth": "London", "gender": "male"},
+# $ head Nobel_winners_by_request_chains.json
+
+# $ scrapy crawl Nobel_winners_with_photos -o Nobel_winners_with_photos.json

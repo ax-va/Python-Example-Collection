@@ -40,11 +40,16 @@ class NobelWinnerItem(scrapy.Item):
 
 class NobelWinnersSpiderWithRequestChain(scrapy.Spider):
     """
-    Scrapes the Nobel-winner data.
+    Scrapes the Nobel-winners data.
     """
-    name = 'Nobel_winners_with_request_chain'
+    name = 'Nobel_winners_by_request_chains'
     allowed_domains = [WIKIPEDIA_DOMAIN]
     start_urls = [NOBEL_WINNERS_BY_COUNTRY_URL]
+    custom_settings = {
+        'ITEM_PIPELINES': {
+            'nobel_winners.pipelines.DroppingNonPersons': 300,
+        },
+    }
 
     def parse(self, response: Response, **kwargs: Any) -> Request:
         country_item_list = response.xpath('//ol[1]/../h3')
@@ -108,7 +113,7 @@ class NobelWinnersSpiderWithRequestChain(scrapy.Spider):
             # Get the href link-address from the <a> tag
             'link': BASE_URL + winner_item.xpath('a/@href').extract()[0],
             # Get comma-delineated name and strip trailing whitespace
-            'name': text.split(',')[0].strip(),
+            'name': text.split(',')[0].replace('*', '').strip(),
             'year': int(year[0]) if year else None,
             'category': category[0] if category else None,
             'country': country if not is_asteriks_contained else None,

@@ -55,13 +55,13 @@ class NobelWinnersSpiderWithRequestChain(scrapy.Spider):
                 winner_data = self._process_winner_li(winner_item, country[0])
                 request = scrapy.Request(  # Make a request to the winner’s biography page
                     winner_data['link'],
-                    callback=self.parse_biography,  # Set the callback function to handle the response
+                    callback=self.parse_biographical_page,  # Set the callback function to handle the response
                     dont_filter=True
                 )
                 request.meta['item'] = NobelWinnerItem(**winner_data)
                 yield request
 
-    def parse_biography(self, response: Response) -> Request:
+    def parse_biographical_page(self, response: Response) -> Request:
         """
         Handles the callback from the biography-link request.
         """

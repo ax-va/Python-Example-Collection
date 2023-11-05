@@ -1,5 +1,5 @@
 """
-This NumPy example is based on:
+This example inroduces NumPy and is based on:
 - "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
 - https://numpy.org/doc/stable/reference/arrays.ndarray.html;
 - https://numpy.org/doc/stable/reference/routines.math.html.

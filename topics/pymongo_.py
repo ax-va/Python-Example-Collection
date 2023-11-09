@@ -147,6 +147,7 @@ client = MongoClient()  # default: host='localhost', port=27017
 db = client[DB_NOBEL_PRIZE]
 # Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'nobel_prize')
 
+# Create or get a collection
 coll = db[COLL_WINNERS]
 # Collection(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'nobel_prize'), 'winners')
 

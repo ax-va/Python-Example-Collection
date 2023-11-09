@@ -92,7 +92,7 @@ import bson
 from pymongo import MongoClient
 
 # It is recommended to use constants to avoid creating an unwanted database
-DB_NOBEL_PRIZE = 'nobel_prize'  # databas
+DB_NOBEL_PRIZE = 'nobel_prize'  # database
 COLL_WINNERS = 'winners'  # collection
 
 # list of dictionaries
@@ -121,37 +121,18 @@ nobel_winners = [
 ]
 
 
-def get_mongo_database(
-        db_name,
-        host='localhost',
-        port=27017,
-        username=None,
-        password=None,
-):
-    """
-    Get named database from MongoDB with(out) authentication .
-    """
-    # Make Mongo connection with(out) authentication
-    if username and password:
-        mongo_uri = f'mongodb://{username}:{password}@{host}/{db_name}'
-        conn = MongoClient(mongo_uri)
-    else:
-        conn = MongoClient(host, port)
-    return conn[db_name]
-
-
 def mongo_coll_to_dicts(
+        client,
         dbname='test',
-        collname='test',
+        coll_name='test',
         query=None,
         delete_id=True,
-        **kw,
 ):
     if query is None:
         # Find all documents in the collection
         query = {}
-    db = get_mongo_database(dbname, **kw)
-    dict_list = list(db[collname].find(query))
+    db = client[dbname]
+    dict_list = list(db[coll_name].find(query))
     if delete_id:
         # Delete id from the list of dictionaries
         for entry in dict_list:
@@ -159,29 +140,33 @@ def mongo_coll_to_dicts(
     return dict_list
 
 
-db = get_mongo_database(DB_NOBEL_PRIZE)
+client = MongoClient()  # default: host='localhost', port=27017
+# MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True)
+
+# Create or get a database
+db = client[DB_NOBEL_PRIZE]
 # Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'nobel_prize')
 
 coll = db[COLL_WINNERS]
 # Collection(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'nobel_prize'), 'winners')
 
 coll.insert_many(nobel_winners)
-# <pymongo.results.InsertManyResult at 0x7fdbacc651e0>
+# <pymongo.results.InsertManyResult at 0x7f0169681de0>
 
 list(coll.find())
-# [{'_id': ObjectId('651c42abbab104d494d367ca'),
+# [{'_id': ObjectId('654d3c74725019559e886f89'),
 #   'category': 'Physics',
 #   'name': 'Albert Einstein',
 #   'nationality': 'German and Swiss',
 #   'gender': 'male',
 #   'year': 1921},
-#  {'_id': ObjectId('651c42abbab104d494d367cb'),
+#  {'_id': ObjectId('654d3c74725019559e886f8a'),
 #   'category': 'Physics',
 #   'name': 'Paul Dirac',
 #   'nationality': 'British',
 #   'gender': 'male',
 #   'year': 1933},
-#  {'_id': ObjectId('651c42abbab104d494d367cc'),
+#  {'_id': ObjectId('654d3c74725019559e886f8b'),
 #   'category': 'Chemistry',
 #   'name': 'Marie Curie',
 #   'nationality': 'Polish',
@@ -189,7 +174,7 @@ list(coll.find())
 #   'year': 1911}]
 
 # Get the generation time of the ObjectId
-bson.ObjectId().generation_time
+bson.ObjectId().generation_time  # BSON is binary JSON
 # datetime.datetime(2023, 10, 4, 6, 42, 16, tzinfo=<bson.tz_util.FixedOffset object at 0x7f89d0193650>)
 
 result = coll.find({'category': 'Chemistry'})
@@ -212,12 +197,14 @@ list(coll.find({'year': {'$gt': 1930}}))
 #   'year': 1933}]
 
 # Find all winners after 1930 or all female winners
-list(coll.find({
-    '$or': [
-        {'year': {'$gt': 1930}},
-        {'gender': 'female'},
-    ]
-}))
+list(coll.find(
+    {
+        '$or': [
+            {'year': {'$gt': 1930}},
+            {'gender': 'female'},
+        ]
+    }
+))
 # [{'_id': ObjectId('651c42abbab104d494d367cb'),
 #   'category': 'Physics',
 #   'name': 'Paul Dirac',
@@ -231,7 +218,7 @@ list(coll.find({
 #   'gender': 'female',
 #   'year': 1911}]
 
-mongo_coll_to_dicts(DB_NOBEL_PRIZE, COLL_WINNERS)
+mongo_coll_to_dicts(client, DB_NOBEL_PRIZE, COLL_WINNERS)
 # [{'category': 'Physics',
 #   'name': 'Albert Einstein',
 #   'nationality': 'German and Swiss',
@@ -247,3 +234,5 @@ mongo_coll_to_dicts(DB_NOBEL_PRIZE, COLL_WINNERS)
 #   'nationality': 'Polish',
 #   'gender': 'female',
 #   'year': 1911}]
+
+client.drop_database(DB_NOBEL_PRIZE)

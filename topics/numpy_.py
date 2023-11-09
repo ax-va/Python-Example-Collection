@@ -6,6 +6,9 @@ This example introduces NumPy and is based on:
 """
 import numpy as np
 
+print(np.__version__)
+# 1.26.1
+
 a = np.array([1, 2, 3, 4, 5, 6, 7, 8])
 # array([1, 2, 3, 4, 5, 6, 7, 8])
 

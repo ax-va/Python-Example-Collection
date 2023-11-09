@@ -143,6 +143,10 @@ def mongo_coll_to_dicts(
 client = MongoClient()  # default: host='localhost', port=27017
 # MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True)
 
+# MongoDB version
+print(client.server_info()["version"])
+# 7.0.2
+
 # Create or get a database
 db = client[DB_NOBEL_PRIZE]
 # Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'nobel_prize')

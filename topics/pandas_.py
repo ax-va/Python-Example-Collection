@@ -10,6 +10,9 @@ https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#sql-queries
 """
 import pandas as pd
 
+print(pd.__version__)
+# 2.1.2
+
 df = pd.read_json('scrapy-projects/nobel_winners/Nobel_winners_by_request_chains.json')
 df.head()
 #                                                 link                     name  year                category  country  ...     date_of_birth      date_of_death place_of_birth              place_of_death  gender
@@ -233,6 +236,9 @@ with pd.ExcelWriter('excel-like-files/nobel_winners_from_dataframe.xlsx') as wri
 # # # SQL
 import sqlalchemy
 
+print(sqlalchemy.__version__)
+# 2.0.21
+
 sql_engine = sqlalchemy.create_engine('sqlite:///sqlite-databases/nobel_winners_for_pandas.db')
 # read_sql is a wrapper of read_sql_table and read_sql_query
 df = pd.read_sql('nobel_winners', sql_engine)
@@ -271,6 +277,10 @@ from pymongo import MongoClient
 # Create a Mongo client, using the default host and ports
 client = MongoClient()  # default: host='localhost', port=27017
 # MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True)
+
+# MongoDB version
+print(client.server_info()["version"])
+# 7.0.2
 
 # Get the nobel_prize database
 db = client.nobel_prize_for_pandas

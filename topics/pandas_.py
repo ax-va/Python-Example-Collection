@@ -1,13 +1,14 @@
 """
-...
-https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html
-https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#reading-json
-https://jsonlint.com/
-https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#json
-https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#csv-text-files
-https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#reading-excel-files
-https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#sql-queries
+This example introduces Pandas and is based on:
+- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
+- https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html;
+- https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#reading-json;
+- https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#json;
+- https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#csv-text-files;
+- https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#reading-excel-files;
+- https://pandas.pydata.org/pandas-docs/dev/user_guide/io.html#sql-queries.
 """
+import numpy as np
 import pandas as pd
 
 print(pd.__version__)
@@ -400,3 +401,79 @@ list(db["winners"].find())
 #   'nationality': 'Polish',
 #   'gender': 'female',
 #   'year': 1911}]
+
+# # # Series
+
+pd.Series([1, 2, 3, 4])
+# 0    1
+# 1    2
+# 2    3
+# 3    4
+# dtype: int64
+
+pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])
+# a    1
+# b    2
+# c    3
+# d    4
+# dtype: int64
+
+pd.Series({'a': 1, 'b': 2, 'c': 3})
+# a    1
+# b    2
+# c    3
+# dtype: int64
+
+pd.Series({'a': 1, 'b': 2}, index=['a', 'b', 'c'])
+# a    1.0
+# b    2.0
+# c    NaN
+# dtype: float64
+
+pd.Series({'a': 1, 'b': 2, 'c': 3}, index=['a', 'b'])
+# a    1
+# b    2
+# dtype: int64
+
+pd.Series(9, {'a', 'b', 'c'})
+# b    9
+# c    9
+# a    9
+# dtype: int64
+
+ser = pd.Series([1, 2, 3, 4], ['a', 'b', 'c', 'd'])
+# a    1
+# b    2
+# c    3
+# d    4
+# dtype: int64
+
+np.sqrt(ser)
+# a    1.000000
+# b    1.414214
+# c    1.732051
+# d    2.000000
+# dtype: float64
+
+ser[1:3]
+# b    2
+# c    3
+# dtype: int64
+
+pd.Series([1, 2.5, 'foo']) + pd.Series([2, 3, 'bar'])
+# 0         3
+# 1       5.5
+# 2    foobar
+# dtype: object
+
+names = pd.Series(['Albert Camus', 'Richard Ph. Feynman'], name='name')
+categories = pd.Series(['Literature', 'Physics'], name='category')
+pd.concat([names, categories], axis=1)
+#                   name    category
+# 0         Albert Camus  Literature
+# 1  Richard Ph. Feynman     Physics
+
+pd.concat([names, categories], axis="columns")
+#                   name    category
+# 0         Albert Camus  Literature
+# 1  Richard Ph. Feynman     Physics

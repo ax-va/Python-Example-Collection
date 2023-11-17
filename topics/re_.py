@@ -133,6 +133,7 @@ for pattern in patterns:
 # \W        -> ['#', '$', ' ', '\t', ' ', ' ', '\n', ' ', ' ']
 # .         -> ['#', '1', '$', '2', 'm', '_', ' ', 'M', '\t', ' ', 'ä', ' ', ' ', 'l', 'm', ' ', 'm', 'l']
 # [lmn]     -> ['m', 'l', 'm', 'm', 'l']
+# \b        -> word boundary position
 
 # # # or, groups, and complements
 
@@ -179,6 +180,12 @@ re.findall(r"[^(ae)]", "abcde")
 
 re.findall(r"[^a^e]", "abcde")
 # ['b', 'c', 'd']
+
+# Find words by using word boundary position \b
+pattern = re.compile(r"\b" + re.escape(r"word") + r"\b")
+text = "word word wordword wordwordword word"
+pattern.findall(text)
+# ['word', 'word', 'word']
 
 # The difference between "search" and "match":
 

@@ -1,5 +1,7 @@
 """
-https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#string-methods
+This example of data cleaning with Pandas is based on:
+- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
+- https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#string-methods.
 """
 import numpy as np
 import pandas as pd

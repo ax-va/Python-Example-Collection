@@ -980,4 +980,28 @@ df_from_sql.count()
 # award_age         974
 # dtype: int64
 
+# to_parquet also saves datatime as datetime64
 df.to_parquet('parquet-files/nobel_winners_cleaned.parquet')  # precondition: fastparquet installed
+df = pd.read_parquet('parquet-files/nobel_winners_cleaned.parquet')  # precondition: fastparquet installed
+df.info()
+# <class 'pandas.core.frame.DataFrame'>
+# Index: 974 entries, Richard Adolf Zsigmondy to John Carew Eccles
+# Data columns (total 13 columns):
+#  #   Column          Non-Null Count  Dtype
+# ---  ------          --------------  -----
+#  0   link            974 non-null    object
+#  1   year            974 non-null    int64
+#  2   category        974 non-null    object
+#  3   country         974 non-null    object
+#  4   text            974 non-null    object
+#  5   wikidata_code   974 non-null    object
+#  6   date_of_birth   974 non-null    datetime64[ns]
+#  7   date_of_death   667 non-null    datetime64[ns]
+#  8   place_of_birth  974 non-null    object
+#  9   place_of_death  665 non-null    object
+#  10  gender          974 non-null    object
+#  11  born_in         136 non-null    object
+#  12  award_age       974 non-null    int64
+# dtypes: datetime64[ns](2), int64(2), object(9)
+# memory usage: 106.5+ KB
+

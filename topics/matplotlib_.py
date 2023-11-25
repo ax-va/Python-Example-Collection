@@ -29,7 +29,7 @@ x = x.to_timestamp().to_pydatetime()
 rng = np.random.default_rng(seed=42)
 y = np.random.standard_normal(size=(200, 3)).cumsum(0)
 plt.plot(x, y)
-plt.savefig('matplotlib-figures/example-01--global-state.svg')
+plt.savefig('matplotlib-figures/figure-01--global-state.svg')
 plt.close()
 
 # # # Configure Matplotlib
@@ -37,7 +37,7 @@ plt.close()
 plt.rcParams['lines.linewidth'] = 2
 plt.rcParams['axes.prop_cycle'] = cycler.cycler(color=['k', 'y', 'm'])
 plt.plot(x, y)
-plt.savefig('matplotlib-figures/example-02--rcParams.svg')
+plt.savefig('matplotlib-figures/figure-02--rcParams.svg')
 plt.close()
 
 # # # Set the figure’s size
@@ -46,14 +46,14 @@ plt.close()
 plt.rcParams['figure.figsize'] = (8, 4)
 plt.gcf().set_size_inches(8, 4)
 plt.plot(x, y)
-plt.savefig('matplotlib-figures/example-03--figure-size.svg')
+plt.savefig('matplotlib-figures/figure-03--figure-size.svg')
 plt.close()
 
 # solid (-), dashed (--), and dash-dotted (-.) lines
 
 # plots = plt.plot(x,y)
 plots = plt.plot(x, y[:,0], '-', x, y[:,1], '--', x, y[:,2], '-.')
-plt.savefig('matplotlib-figures/example-04--styled-lines.svg')
+plt.savefig('matplotlib-figures/figure-04--styled-lines.svg')
 plt.close()
 
 # legend
@@ -65,7 +65,7 @@ plt.legend(
     framealpha=0.5,  # transparency.
     prop={'size': 'small', 'family': 'monospace'},  # font properties
 )
-plt.savefig('matplotlib-figures/example-05--legend.svg')
+plt.savefig('matplotlib-figures/figure-05--legend.svg')
 plt.close()
 
 # title and axes labels
@@ -83,7 +83,7 @@ plt.figtext(
 plt.grid(True)
 # plt.tight_layout()  # All the plot elements are within the figure box
 plt.gcf().set_tight_layout(True)  # All the plot elements are within the figure box
-plt.savefig('matplotlib-figures/example-06--title--axes-labels--more.svg')
+plt.savefig('matplotlib-figures/figure-06--title--axes-labels--more.svg')
 plt.close()
 
 # # # object-oriented Matplotlib
@@ -106,7 +106,7 @@ ax2 = fig.add_axes((0.5, 0.2, 0.4, 0.4))  # (left in %, bottom in %, width in %,
 ax2.plot(x, y[:, 1], color='g')  # 'g' for green
 ax2.set_xticks([])  # Remove the x ticks and labels from our embedded plot
 # ax2.set_yticks([])
-fig.savefig('matplotlib-figures/example-07--object-oriented.svg')
+fig.savefig('matplotlib-figures/figure-07--object-oriented.svg')
 plt.close()
 
 # subplots
@@ -128,7 +128,7 @@ ax.set_ylabel('Cum. sum')
 ax.grid(True)
 fig.text(0.995, 0.01, 'SOME TEXT', ha='right', va='bottom')
 fig.tight_layout()
-fig.savefig('matplotlib-figures/example-08--subplots-1.svg')
+fig.savefig('matplotlib-figures/figure-08--subplots-1.svg')
 plt.close()
 
 # three axes
@@ -145,7 +145,7 @@ for ind, ld in enumerate(labelled_data):
     ax.set_ylabel('Cum. sum')
     ax.legend(loc='upper left', framealpha=0.5, prop={'size': 'small'})
 axes[-1].set_xlabel('Date')
-fig.savefig('matplotlib-figures/example-09--subplots-2.svg')
+fig.savefig('matplotlib-figures/figure-09--subplots-2.svg')
 plt.close()
 
 # # # bar charts
@@ -163,7 +163,7 @@ plt.title("Prizes won by Fooland")
 plt.gca().get_xaxis().tick_bottom()
 plt.gca().get_yaxis().tick_left()
 plt.gcf().set_size_inches((8, 4))
-plt.savefig('matplotlib-figures/example-10--bar-chart.svg')
+plt.savefig('matplotlib-figures/figure-10--bar-chart.svg')
 plt.close()
 
 bar_data = [8, 3, 6, 1]
@@ -180,7 +180,7 @@ ax.legend(loc='best')
 ax.set_ylabel('Number of prizes')
 fig.suptitle('Prizes by country')
 fig.tight_layout(pad=2)  # specify padding around the figure as a fraction of the font size
-fig.savefig('matplotlib-figures/example-11--subplots-bar-charts.png', dpi=500)
+fig.savefig('matplotlib-figures/figure-11--subplots-bar-charts.png', dpi=500)
 plt.close()
 
 bar_data = [8, 3, 6, 1]
@@ -195,7 +195,7 @@ ax.set_yticklabels(labels)
 ax.xaxis.grid(True)
 ax.legend(loc='best')
 ax.set_xlabel('Number of prizes')
-fig.savefig('matplotlib-figures/example-12--horizontal-bar-charts.svg')
+fig.savefig('matplotlib-figures/figure-12--horizontal-bar-charts.svg')
 plt.close()
 
 fig, ax = plt.subplots(figsize=(8, 4))
@@ -211,7 +211,7 @@ ax.legend(loc='best')
 ax.set_ylabel('Number of prizes')
 fig.suptitle('Prizes by country')
 fig.tight_layout(pad=2)  # specify padding around the figure as a fraction of the font size
-fig.savefig('matplotlib-figures/example-13--stacked-bar-charts.svg',)
+fig.savefig('matplotlib-figures/figure-13--stacked-bar-charts.svg',)
 plt.close()
 
 # # # scatter plots
@@ -225,7 +225,7 @@ colors = np.random.rand(num_points)
 size = np.pi * (2 + np.random.rand(num_points) * 8) ** 2
 ax.scatter(x, y, s=size, c=colors, alpha=0.5)
 fig.suptitle('Scatterplot with Color and Size Specified')
-fig.savefig('matplotlib-figures/example-14--scatter.svg',)
+fig.savefig('matplotlib-figures/figure-14--scatter.svg',)
 plt.close()
 
 # linear regression
@@ -238,5 +238,5 @@ ax.scatter(x, y)
 m, c = np.polyfit(x, y, deg=1)
 ax.plot(x, m * x + c, c="r")
 fig.suptitle('Scatterplot with Linear Regression')
-fig.savefig('matplotlib-figures/example-15--scatter-with-linear-regression.svg',)
+fig.savefig('matplotlib-figures/figure-15--scatter-with-linear-regression.svg',)
 plt.close()

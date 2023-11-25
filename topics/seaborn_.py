@@ -34,7 +34,7 @@ sns.lmplot(
     ci=68,  # confidence interval of 68%, the standard error estimate
 )
 plt.tight_layout()  # seaborn shares the Matplotlib global context
-plt.savefig('seaborn-figures/example-1--lmplot-with-linear-regression.svg')
+plt.savefig('seaborn-figures/figure-1--lmplot-with-linear-regression.svg')
 plt.close()
 
 # FacetGrids
@@ -62,7 +62,7 @@ g = sns.FacetGrid(
     aspect=1,
 )
 g.map(plt.scatter, "total_bill", "tip")
-plt.savefig('seaborn-figures/example-2--FacetGrid-1.svg')
+plt.savefig('seaborn-figures/figure-2--FacetGrid-1.svg')
 plt.close()
 
 g = sns.FacetGrid(
@@ -76,7 +76,7 @@ g = sns.FacetGrid(
 )
 g.map(plt.scatter, "total_bill", "tip", alpha=.4)
 g.add_legend()
-plt.savefig('seaborn-figures/example-3--FacetGrid-2.svg')
+plt.savefig('seaborn-figures/figure-3--FacetGrid-2.svg')
 plt.close()
 
 g = sns.FacetGrid(
@@ -91,7 +91,7 @@ g = sns.FacetGrid(
 )
 g.map(sns.regplot, "total_bill", "tip")  # regplot for regression
 g.add_legend()
-plt.savefig('seaborn-figures/example-4--FacetGrid--regplot.svg')
+plt.savefig('seaborn-figures/figure-4--FacetGrid--regplot.svg')
 plt.close()
 
 # Note: FacetGrid and regplot suggest more than lmplot.
@@ -109,7 +109,7 @@ g = sns.lmplot(
     aspect=1,
 )
 g.add_legend()
-plt.savefig('seaborn-figures/example-5--lmplot.svg')
+plt.savefig('seaborn-figures/figure-5--lmplot.svg')
 plt.close()
 
 
@@ -139,5 +139,5 @@ g = sns.PairGrid(
 g.map_diag(plt.hist)
 g.map_offdiag(plt.scatter)
 g.add_legend()
-plt.savefig('seaborn-figures/example-6--PairGrid.svg')
+plt.savefig('seaborn-figures/figure-6--PairGrid.svg')
 plt.close()

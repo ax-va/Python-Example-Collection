@@ -979,3 +979,5 @@ df_from_sql.count()
 # born_in           136
 # award_age         974
 # dtype: int64
+
+df.to_parquet('parquet-files/nobel_winners_cleaned.parquet')  # precondition: fastparquet installed

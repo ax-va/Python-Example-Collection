@@ -13,6 +13,8 @@ d.isoformat()
 # '2023-10-04T09:14:27.797305'
 # Microseconds are lost.
 
+# # # str to datetime
+
 # Make datetime.datetime using datetime.datetime.strptime
 d = datetime.strptime('2022-01-25 01:59:59.999', '%Y-%m-%d %H:%M:%S.%f')
 # datetime.datetime(2022, 1, 25, 1, 59, 59, 999000)
@@ -32,4 +34,9 @@ d = datetime.strptime('2022012', '%Y%m%d')
 # Make datetime.datetime using dateutil.parser.parse
 d = parser.parse('2022-01-25T22:55:44.738Z')
 # datetime.datetime(2022, 1, 25, 22, 55, 44, 738000, tzinfo=tzutc())
+
+# # # datetime to str
+
+datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+# '2023-12-21 21:43:55.117894'
 

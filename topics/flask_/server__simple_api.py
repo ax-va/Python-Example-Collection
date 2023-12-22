@@ -45,6 +45,6 @@ $ python server__simple_api.py
 Open:
 http://localhost:8000/api/winners?country=Japan&catagory=Physics
 
-Or use in the commnad line:
+Or write in the command line:
 $ curl -d category=Physics -d country=Japan --get http://localhost:8000/api/winners
 """

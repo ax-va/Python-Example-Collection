@@ -14,7 +14,7 @@ cd /opt/DbVisualizer
 ./dbvis
 """
 import sqlalchemy
-from sqlalchemy import create_engine, MetaData, Table, desc
+from sqlalchemy import create_engine, MetaData, desc
 from sqlalchemy import Column, Integer, String, Enum
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker

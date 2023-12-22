@@ -1,3 +1,7 @@
+"""
+This Flask example is based on:
+- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023.
+"""
 from flask import Flask
 
 
@@ -14,10 +18,10 @@ if __name__ == "__main__":
         port=8000,  # localhost port the server will run on
         debug=True,  # useful logging to screen and in the event of an error, a browser-based report
     )
+
 """
 Run:
-
-python server.py
+$ python server.py
 
  * Serving Flask app 'server'
  * Debug mode: on

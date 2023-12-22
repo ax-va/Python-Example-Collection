@@ -1,6 +1,8 @@
 """
-https://jinja.palletsprojects.com/en/latest/
-https://flask.palletsprojects.com/en/3.0.x/
+This Flask example is based on:
+- "Data Visualization with Python and JavaScript: Scrape, Clean, Explore, and Transform Your Data", Kyran Dale, O'Reilly, 2023;
+- https://jinja.palletsprojects.com/en/latest/;
+- https://flask.palletsprojects.com/en/3.0.x/.
 """
 from flask import Flask, render_template
 
@@ -36,7 +38,7 @@ if __name__ == "__main__":
 
 """
 Run:
-python server_jinja.py
+$ python server_jinja.py
 
 Open:
 http://localhost:8000/winners

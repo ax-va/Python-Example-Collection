@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 @app.route('/api/winners')
-def get_country_data():
+def get_winners():
     df = pd.read_parquet('../parquet-files/nobel_winners_cleaned.parquet')
     print(f"Request args: {dict(request.args)}")
     total_query = ""

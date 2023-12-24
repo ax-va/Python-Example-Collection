@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
 """
 Run Flask:
-$ python server__simple_api.py
+$ python server__api.py
 
 Open:
 http://localhost:8000/api/winners?country=Japan&catagory=Physics

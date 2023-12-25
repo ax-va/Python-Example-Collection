@@ -70,12 +70,12 @@ def make_pagination(url: str, results: dict):
     per_page: int = pagination['per_page']
     num_pages: int = pagination["num_pages"]
     if page > 1:
-        prev_page = url + f'?page={page-1}&per_page={per_page}&' + query_str
+        prev_page = url + f'?page={page-1}&per_page={per_page}&{query_str}'
     else:
         prev_page = ''
 
     if page < num_pages:
-        next_page = url + f'?page={page+1}&per_page={per_page}&' + query_str
+        next_page = url + f'?page={page+1}&per_page={per_page}&{query_str}'
     else:
         next_page = ''
 

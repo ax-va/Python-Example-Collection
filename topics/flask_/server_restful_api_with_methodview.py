@@ -93,7 +93,7 @@ class WinnerView(MethodView):
         winner_to_update = Winner.query.get_or_404(winner_id)
         fields = winner_schema.fields
         kwargs = {key: value for key, value in request.json.items() if key in fields}
-        app.logger.info(f"Updating a winner with these fields: {kwargs}")
+        app.logger.info(f"Updating the winner with the fields: {kwargs}")
         for key, value in kwargs.items():
             setattr(winner_to_update, key, value)
         db.session.commit()

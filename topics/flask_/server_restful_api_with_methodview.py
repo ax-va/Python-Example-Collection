@@ -8,11 +8,13 @@ This Flask example is based on:
 import os
 from flask import Flask, request
 from flask.views import MethodView
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
 
 app = Flask(__name__)
+CORS(app)  # Allow requests from any domain to access the data server
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.abspath('../sqlite-databases/nobel_winners.db')
 db = SQLAlchemy(app)
 ma = Marshmallow(app)

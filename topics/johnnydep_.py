@@ -14,5 +14,7 @@ with open("deps.txt", "r") as file:
         name, version = line.split("==")  # --output-format pinned
         deps.append((name, version))
 
-print(deps)
-# [('pandas', '2.2.0'), ('numpy', '1.26.4'), ('python-dateutil', '2.8.2'), ('pytz', '2024.1'), ('tzdata', '2024.1'), ('six', '1.16.0')]
+print(deps[0])
+# ('pandas', '2.2.0')
+print(deps[1:])
+# [('numpy', '1.26.4'), ('python-dateutil', '2.8.2'), ('pytz', '2024.1'), ('tzdata', '2024.1'), ('six', '1.16.0')]

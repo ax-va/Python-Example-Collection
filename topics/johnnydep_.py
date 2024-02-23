@@ -12,6 +12,7 @@ johnnydep.cli.main(
 )
 
 deps = []
+# Change the cursor position
 temp_io.seek(0)
 for line in temp_io:
     line = line[:-1]

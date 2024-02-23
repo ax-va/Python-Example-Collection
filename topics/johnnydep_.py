@@ -1,18 +1,24 @@
 """
-Save package's dependencies in a file and read
-the file for getting the Python list of dependencies
+Save package's dependencies in a StringIO instance
+and read it for getting the Python list of dependencies
 """
+import io
 import johnnydep.cli
 
-with open("deps.txt", "w") as file:
-    johnnydep.cli.main(argv=["pandas==2.2.0", "-o" "pinned", "-v" "0"], stdout=file)
+temp_io = io.StringIO()
+johnnydep.cli.main(
+    argv=["pandas==2.2.0", "-o" "pinned"],
+    stdout=temp_io,
+)
 
 deps = []
-with open("deps.txt", "r") as file:
-    for line in file:
-        line = line[:-1]
-        name, version = line.split("==")  # --output-format pinned
-        deps.append((name, version))
+temp_io.seek(0)
+for line in temp_io:
+    line = line[:-1]
+    name, version = line.split("==")  # --output-format pinned
+    deps.append((name, version))
+
+temp_io.close()
 
 print(deps[0])
 # ('pandas', '2.2.0')

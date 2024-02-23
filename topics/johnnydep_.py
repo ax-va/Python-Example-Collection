@@ -2,25 +2,25 @@
 Save package's dependencies in a StringIO instance
 and read it for getting the Python list of dependencies
 """
-import io
 import johnnydep.cli
+from io import StringIO
 from pprint import pprint
 
-temp_io = io.StringIO()
+string_io = StringIO()
 johnnydep.cli.main(
     argv=["pandas==2.2.0", "-o" "pinned",],
-    stdout=temp_io,
+    stdout=string_io,
 )
 
 deps = []
 # Change the cursor position
-temp_io.seek(0)
-for line in temp_io:
+string_io.seek(0)
+for line in string_io:
     line = line[:-1]
     name, version = line.split("==")  # --output-format pinned
     deps.append((name, version))
 
-temp_io.close()
+string_io.close()
 
 print(deps[0])
 # ('pandas', '2.2.0')

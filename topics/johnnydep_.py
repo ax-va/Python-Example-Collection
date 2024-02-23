@@ -4,10 +4,11 @@ and read it for getting the Python list of dependencies
 """
 import io
 import johnnydep.cli
+from pprint import pprint
 
 temp_io = io.StringIO()
 johnnydep.cli.main(
-    argv=["pandas==2.2.0", "-o" "pinned"],
+    argv=["pandas==2.2.0", "-o" "pinned",],
     stdout=temp_io,
 )
 
@@ -23,5 +24,9 @@ temp_io.close()
 
 print(deps[0])
 # ('pandas', '2.2.0')
-print(deps[1:])
-# [('numpy', '1.26.4'), ('python-dateutil', '2.8.2'), ('pytz', '2024.1'), ('tzdata', '2024.1'), ('six', '1.16.0')]
+pprint(deps[1:])
+# [('numpy', '1.26.4'),
+#  ('python-dateutil', '2.8.2'),
+#  ('pytz', '2024.1'),
+#  ('tzdata', '2024.1'),
+#  ('six', '1.16.0')]

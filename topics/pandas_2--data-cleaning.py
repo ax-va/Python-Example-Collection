@@ -955,7 +955,58 @@ df.loc['Lê Đức Thọ']
 # award_age                                                        62
 # Name: Lê Đức Thọ, dtype: object
 
+df = df.reset_index()  # We also need to save the names in the final JSON
+df.info()
+# <class 'pandas.core.frame.DataFrame'>
+# RangeIndex: 974 entries, 0 to 973
+# Data columns (total 14 columns):
+#  #   Column          Non-Null Count  Dtype
+# ---  ------          --------------  -----
+#  0   name            974 non-null    object
+#  1   link            974 non-null    object
+#  2   year            974 non-null    int64
+#  3   category        974 non-null    object
+#  4   country         974 non-null    object
+#  5   text            974 non-null    object
+#  6   wikidata_code   974 non-null    object
+#  7   date_of_birth   974 non-null    datetime64[ns]
+#  8   date_of_death   667 non-null    datetime64[ns]
+#  9   place_of_birth  974 non-null    object
+#  10  place_of_death  665 non-null    object
+#  11  gender          974 non-null    object
+#  12  born_in         136 non-null    object
+#  13  award_age       974 non-null    int64
+# dtypes: datetime64[ns](2), int64(2), object(10)
+# memory usage: 106.7+ KB
 df.to_json('json-files/nobel_winners_cleaned.json', orient='records', date_format='iso')
+
+# to_parquet also saves datatime as datetime64
+df.to_parquet('parquet-files/nobel_winners_cleaned.parquet')  # precondition: fastparquet installed
+df = pd.read_parquet('parquet-files/nobel_winners_cleaned.parquet')  # precondition: fastparquet installed
+df.info()
+# <class 'pandas.core.frame.DataFrame'>
+# RangeIndex: 974 entries, 0 to 973
+# Data columns (total 14 columns):
+#  #   Column          Non-Null Count  Dtype
+# ---  ------          --------------  -----
+#  0   name            974 non-null    object
+#  1   link            974 non-null    object
+#  2   year            974 non-null    int64
+#  3   category        974 non-null    object
+#  4   country         974 non-null    object
+#  5   text            974 non-null    object
+#  6   wikidata_code   974 non-null    object
+#  7   date_of_birth   974 non-null    datetime64[ns]
+#  8   date_of_death   667 non-null    datetime64[ns]
+#  9   place_of_birth  974 non-null    object
+#  10  place_of_death  665 non-null    object
+#  11  gender          974 non-null    object
+#  12  born_in         136 non-null    object
+#  13  award_age       974 non-null    int64
+# dtypes: datetime64[ns](2), int64(2), object(10)
+# memory usage: 106.7+ KB
+
+# SQL
 
 import sqlalchemy
 engine = sqlalchemy.create_engine('sqlite:///sqlite-databases/nobel_winners_for_pandas.db')
@@ -979,29 +1030,3 @@ df_from_sql.count()
 # born_in           136
 # award_age         974
 # dtype: int64
-
-# to_parquet also saves datatime as datetime64
-df.to_parquet('parquet-files/nobel_winners_cleaned.parquet')  # precondition: fastparquet installed
-df = pd.read_parquet('parquet-files/nobel_winners_cleaned.parquet')  # precondition: fastparquet installed
-df.info()
-# <class 'pandas.core.frame.DataFrame'>
-# Index: 974 entries, Richard Adolf Zsigmondy to John Carew Eccles
-# Data columns (total 13 columns):
-#  #   Column          Non-Null Count  Dtype
-# ---  ------          --------------  -----
-#  0   link            974 non-null    object
-#  1   year            974 non-null    int64
-#  2   category        974 non-null    object
-#  3   country         974 non-null    object
-#  4   text            974 non-null    object
-#  5   wikidata_code   974 non-null    object
-#  6   date_of_birth   974 non-null    datetime64[ns]
-#  7   date_of_death   667 non-null    datetime64[ns]
-#  8   place_of_birth  974 non-null    object
-#  9   place_of_death  665 non-null    object
-#  10  gender          974 non-null    object
-#  11  born_in         136 non-null    object
-#  12  award_age       974 non-null    int64
-# dtypes: datetime64[ns](2), int64(2), object(9)
-# memory usage: 106.5+ KB
-

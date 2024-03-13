@@ -5,7 +5,7 @@ from typing import Tuple, List, Dict
 
 import johnnydep.cli
 
-DOWNLOADED_PCKGS_DIR = r"F:\ML_24_02\ML_24_02_new"
+DOWNLOADED_PCKGS_DIR = r"F:\ML_24_02"
 PATTERN = re.compile(r"(.*)-(\d+\.*\d+\.*\d*\.*\w*\d*).*")
 
 temp_str = io.StringIO()

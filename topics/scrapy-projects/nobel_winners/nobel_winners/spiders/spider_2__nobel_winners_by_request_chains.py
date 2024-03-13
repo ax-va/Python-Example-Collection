@@ -19,7 +19,7 @@ BASE_URL = "https://" + WIKIPEDIA_DOMAIN
 NOBEL_WINNERS_BY_COUNTRY_URL = BASE_URL + "/wiki/List_of_Nobel_laureates_by_country"
 YEAR_PATTERN = re.compile(r'\d{4}')
 CATEGORY_PATTERN = re.compile(r'Physics|Chemistry|Physiology or Medicine|Literature|Peace|Economics')
-WIKIDATA_PROPERTIES = [
+WIKIDATA_PROPERTIES= [
     {'name': 'date_of_birth', 'code': 'P569'},
     {'name': 'date_of_death', 'code': 'P570'},
     {'name': 'place_of_birth', 'code': 'P19', 'link': True},

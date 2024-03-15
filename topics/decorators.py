@@ -2,7 +2,8 @@ import functools
 from time import sleep, time
 
 
-def timing_decorator(func):
+def timeit(func):
+    """ Timing decorator """
     @functools.wraps(func)
     def wrapper(delay):
         print("Starting timing...")
@@ -19,14 +20,14 @@ def complex_task1(delay):
     return "Task done"
 
 
-new_complex_task = timing_decorator(complex_task1)
+new_complex_task = timeit(complex_task1)
 print(new_complex_task(1.5))
 # Starting timing...
 # Task elapsed time: 1.5000855922698975
 # Task done
 
 
-@timing_decorator
+@timeit
 def complex_task2(delay):
     sleep(delay)
     return "task done"

@@ -9,8 +9,8 @@ def request_reqs(package: str, version: str = None) -> list[str]:
     """
     Request requirements in PyPI
     """
-    _version = str(version) + "/" if version is not None else ""
-    url = f"https://pypi.org/pypi/{package}/" + _version + "json"
+    ver = str(version) + "/" if version is not None else ""
+    url = f"https://pypi.org/pypi/{package}/" + ver + "json"
     json = requests.get(url).json()
     dependencies = json["info"]["requires_dist"]
     return dependencies

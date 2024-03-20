@@ -12,8 +12,8 @@ def request_reqs(package: str, version: str = None) -> list[str]:
     ver = str(version) + "/" if version is not None else ""
     url = f"https://pypi.org/pypi/{package}/" + ver + "json"
     json = requests.get(url).json()
-    dependencies = json["info"]["requires_dist"]
-    return dependencies
+    deps = json["info"]["requires_dist"]
+    return deps
 
 
 if __name__ == "__main__":

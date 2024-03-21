@@ -112,7 +112,6 @@ def collect_info(
 
 if __name__ == "__main__":
     collect_info()
-
     requires_dist, _ = request_requires_dist("pandas", "2.2.0")
     pprint(requires_dist)
     """

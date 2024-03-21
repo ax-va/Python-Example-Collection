@@ -6,12 +6,13 @@ import requests
 from typing import Tuple
 from pprint import pprint
 
+BASE_URL = "https://pypi.org/pypi/"
 PACKAGE_PATTERN = re.compile(r'(?:(\S+)==(\S+)|(?!\S+==\S+)(\S+)).*')
 
 
 def request_requires_dist(package: str, version: str = None) -> Tuple[list[str], str]:
     """
-    Requests requirements in PyPI.
+    Requests json["info"]["requires_dist"] in PyPI.
     Args:
         package: package's name
         version: package's version
@@ -25,7 +26,7 @@ def request_requires_dist(package: str, version: str = None) -> Tuple[list[str],
 
 def request_info(package: str, version: str = None) -> Tuple[dict, str]:
     """
-    Requests package's info in PyPI.
+    Requests package's json["info"] in PyPI.
     Args:
         package: package's name
         version: package's version
@@ -39,14 +40,14 @@ def request_info(package: str, version: str = None) -> Tuple[dict, str]:
 
 def request_json(package: str, version: str = None) -> Tuple[dict, str]:
     """
-    Requests package's info in PyPI.
+    Requests package's json in PyPI.
     Args:
         package: package's name
         version: package's version
     Returns:
         (JSON dict, request URL)
     """
-    url = f"https://pypi.org/pypi/{package}/{version + '/' if version is not None else ''}json"
+    url = BASE_URL + f"{package}/{version + '/' if version is not None else ''}json"
     print(f"Requesting PyPI {url}...")
     json: dict = requests.get(url).json()
     return json, url

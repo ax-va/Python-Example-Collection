@@ -1,14 +1,12 @@
 """
-Get dependencies without installing packages
+Make requests to PyPI to obtain information about packages.
 """
-import os
 import re
-from typing import Tuple
-
 import requests
+from typing import Tuple
 from pprint import pprint
 
-PACKAGE_PATTERN = re.compile(r'(?![\s#]+)(?:(\S+)==(\S+)|(?!\S+==\S+)(\S+)).*')
+PACKAGE_PATTERN = re.compile(r'(?:(\S+)==(\S+)|(?!\S+==\S+)(\S+)).*')
 
 
 def request_requires_dist(package: str, version: str = None) -> Tuple[list[str], str]:
@@ -59,7 +57,7 @@ def collect_info(
         output_filename: str = "pypi_info.txt",
 ) -> None:
     """
-    Collects information about packages using requests to PyPI.
+    Collects the information about packages using requests to PyPI.
     Args:
         input_filename: file where packages are listed
         output_filename: file where the information is collected
@@ -69,40 +67,46 @@ def collect_info(
 
     with open(input_filename, "r") as input_file:
         for line in input_file:
-            match = PACKAGE_PATTERN.match(line)
-            if match:
-                if match.group(1):
-                    package_name = match.group(1)
-                    print("PACKAGE:", package_name)
-                    package_version = match.group(2)
-                    print("VERSION:", package_version)
-                elif match.group(3):
-                    package_name = match.group(3)
-                    print("PACKAGE:", package_name)
-                    package_version = None
-                    print("VERSION:", "No version specified")
+            if not line.lstrip().startswith("#"):
+                match = PACKAGE_PATTERN.match(line)
+                if match:
+                    match_group1 = match.group(1)
+                    match_group2 = match.group(2)
+                    match_group3 = match.group(3)
+                    if match_group1:
+                        package_name = match_group1
+                        print("PACKAGE:", package_name)
+                        package_version = match_group2
+                        print("VERSION:", package_version)
+                    elif match_group3:
+                        package_name = match_group3
+                        print("PACKAGE:", package_name)
+                        package_version = None
+                        print("VERSION:", "No version specified")
 
-                json, url = request_json(package_name, package_version)
-                print()
+                    json, url = request_json(package_name, package_version)
+                    print()
 
-                with open(output_filename, "a") as output_file:
-                    json_info = json.get("info")
-                    output_file.write(f"NAME: {json_info.get('name')}\n")
-                    output_file.write(f"VERSION: {json_info.get('version')}\n")
-                    output_file.write(f"REQUEST: {url}\n")
-                    output_file.write(f"HOME_PAGE: {json_info.get('home_page')}\n")
-                    json_info_project_urls = json_info.get('project_urls') or {'Repository': ''}
-                    json_info_project_urls_repository = json_info_project_urls.get('Repository', '')
-                    output_file.write(f"REPOSITORY: {json_info_project_urls_repository}\n")
-                    output_file.write(f"RELEASE_URL: {json_info.get('release_url')}\n")
-                    output_file.write(f"REQUIRES_PYTHON: {json_info.get('requires_python')}\n")
-                    output_file.write(f"LICENSE: {json_info.get('license')}\n")
-                    output_file.write(f"SUMMARY: {json_info.get('summary')}\n")
-                    output_file.write("VULNERABILITIES:\n")
-                    vuls = json.get("vulnerabilities", [])
-                    for vul in vuls:
-                        output_file.write(str(vul))
-                    output_file.write("-"*50 + "\n")
+                    with open(output_filename, "a") as output_file:
+                        json_info = json.get("info")
+                        output_file.write(f"NAME: {json_info.get('name')}\n")
+                        output_file.write(f"VERSION: {json_info.get('version')}\n")
+                        output_file.write(f"REQUEST: {url}\n")
+                        output_file.write(f"HOME_PAGE: {json_info.get('home_page')}\n")
+                        json_info_project_urls = json_info.get('project_urls') or {'Repository': ''}
+                        json_info_project_urls_repository = json_info_project_urls.get('Repository', '')
+                        output_file.write(f"REPOSITORY: {json_info_project_urls_repository}\n")
+                        output_file.write(f"RELEASE_URL: {json_info.get('release_url')}\n")
+                        output_file.write(f"REQUIRES_PYTHON: {json_info.get('requires_python')}\n")
+                        output_file.write(f"LICENSE: {json_info.get('license')}\n")
+                        output_file.write(f"SUMMARY: {json_info.get('summary')}\n")
+                        output_file.write("VULNERABILITIES:\n")
+                        vuls = json.get("vulnerabilities", [])
+                        for vul in vuls:
+                            output_file.write(str(vul))
+                        output_file.write("-"*50 + "\n")
+                else:
+                    raise ValueError(f"Incorrect format in '{input_filename}': {line}.")
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ PACKAGE_PATTERN = re.compile(r'(?:(\S+)==(\S+)|(?!\S+==\S+)(\S+)).*')
 
 def request_requires_dist(package: str, version: str = None) -> Tuple[list[str], str]:
     """
-    Requests json["info"]["requires_dist"] in PyPI.
+    Requests PyPI to obtain json["info"]["requires_dist"].
     Args:
         package: package's name
         version: package's version
@@ -26,7 +26,7 @@ def request_requires_dist(package: str, version: str = None) -> Tuple[list[str],
 
 def request_info(package: str, version: str = None) -> Tuple[dict, str]:
     """
-    Requests package's json["info"] in PyPI.
+    Requests PyPI to obtain package's json["info"].
     Args:
         package: package's name
         version: package's version
@@ -40,7 +40,7 @@ def request_info(package: str, version: str = None) -> Tuple[dict, str]:
 
 def request_json(package: str, version: str = None) -> Tuple[dict, str]:
     """
-    Requests package's json in PyPI.
+    Requests PyPI to obtain package's json.
     Args:
         package: package's name
         version: package's version
@@ -55,7 +55,7 @@ def request_json(package: str, version: str = None) -> Tuple[dict, str]:
 
 def collect_info(
         input_filename: str = "requirements.txt",
-        output_filename: str = "pypi_info.txt",
+        output_filename: str = "requirements_info.txt",
 ) -> None:
     """
     Collects the information about packages using requests to PyPI.

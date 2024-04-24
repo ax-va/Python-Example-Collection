@@ -74,6 +74,7 @@ def collect_info(
                     match_group1 = match.group(1)
                     match_group2 = match.group(2)
                     match_group3 = match.group(3)
+                    print()
                     if match_group1:
                         package_name = match_group1
                         print("PACKAGE:", package_name)
@@ -107,7 +108,9 @@ def collect_info(
                             output_file.write(str(vul))
                         output_file.write("-"*50 + "\n")
                 else:
-                    raise ValueError(f"Incorrect format in '{input_filename}': {line}.")
+                    print(f"Not a package: {repr(line)}.")
+            else:
+                print(f"Not a package: {repr(line)}.")
 
 
 if __name__ == "__main__":

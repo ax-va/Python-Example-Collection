@@ -14,6 +14,8 @@ def parse_lib_and_ver(filename: str) -> Tuple[str, str] | Tuple[None, None]:
     Parses the name and version from filename.
     Args:
         filename: package filename
+    Returns:
+        (<package_name>, <package_version>) matching the pattern or (None, None)
     """
     match = re.match(PATTERN, filename)
     return (match.group(1), match.group(2)) if match else (None, None)
@@ -30,7 +32,7 @@ def list_packages_from_dir(
     Args:
         from_dir: directory that contains downloaded packages from PyPI
         extension_split: sets whether files should be split into .whl and .tar.gz
-    Return:
+    Returns:
         lists or a list of packages with the entries (<package_name>, <package_version>)
     """
     pckgs_whl = []
@@ -69,7 +71,7 @@ def look_for_dependencies(
     Finds dependencies of packages
     Args:
         package_list: list of packages with entries (<package_name>, <package_version>)
-    Return:
+    Returns:
         dictionary with dependencies
     """
     deps = {}

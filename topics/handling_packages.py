@@ -75,9 +75,9 @@ def look_for_dependencies(
     """
     deps = {}
     for pckg_name, pckg_ver in package_list:
-        pckg_name = pckg_name.replace("-", "_")
+        pckg_name = pckg_name.replace("_", "-")
         string_io = io.StringIO()
-        print(f"Searching dependencies for {pckg_name}")
+        print(f"Searching for dependencies of {pckg_name}")
         johnnydep.cli.main(
             argv=[f"{pckg_name}=={pckg_ver}", "-o" "pinned", "-v" "0"],
             stdout=string_io,
@@ -88,7 +88,7 @@ def look_for_dependencies(
         for line in string_io:
             line = line[:-1]
             dep_pckg_name, dep_pckg_ver = line.split("==")  # --output-format pinned
-            dep_pckg_name = dep_pckg_name.replace("-", "_")
+            dep_pckg_name = dep_pckg_name.replace("_", "-")
             if dep_pckg_name != pckg_name:
                 pckg_deps.append((dep_pckg_name, dep_pckg_ver))
 
@@ -99,10 +99,44 @@ def look_for_dependencies(
 
 if __name__ == "__main__":
     pack_list_whl, pack_list_tar_gz = list_packages(from_dir=r"F:\...")
+    # numpy 1.26.4
+    # pandas 2.2.2
+    # python_dateutil 2.9.0.post0
+    # pytz 2024.1
+    # six 1.16.0
+    # tzdata 2024.1
+    # Found 6 .whl packages.
+    # Found 0 .tar.gz packages.
     print(".whl:")
+    # .whl:
     pprint(pack_list_whl)
+    # [('numpy', '1.26.4'),
+    #  ('pandas', '2.2.2'),
+    #  ('python_dateutil', '2.9.0.post0'),
+    #  ('pytz', '2024.1'),
+    #  ('six', '1.16.0'),
+    #  ('tzdata', '2024.1')]
     print(".tar.gz:")
+    # .tar.gz:
     pprint(pack_list_tar_gz)
+    # []
     dep_dict = look_for_dependencies(package_list=pack_list_whl)
+    # Searching for dependencies of numpy
+    # Searching for dependencies of pandas
+    # Searching for dependencies of python_dateutil
+    # Searching for dependencies of pytz
+    # Searching for dependencies of six
+    # Searching for dependencies of tzdata
     print("dependencies:")
+    # dependencies:
     pprint(dep_dict)
+    # {('numpy', '1.26.4'): [],
+    #  ('pandas', '2.2.2'): [('numpy', '1.26.4'),
+    #                        ('python_dateutil', '2.9.0.post0'),
+    #                        ('pytz', '2024.1'),
+    #                        ('tzdata', '2024.1'),
+    #                        ('six', '1.16.0')],
+    #  ('python_dateutil', '2.9.0.post0'): [('six', '1.16.0')],
+    #  ('pytz', '2024.1'): [],
+    #  ('six', '1.16.0'): [],
+    #  ('tzdata', '2024.1'): []}

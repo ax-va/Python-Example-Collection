@@ -19,7 +19,7 @@ def parse_lib_and_ver(filename: str) -> Tuple[str, str] | Tuple[None, None]:
     return (match.group(1), match.group(2)) if match else (None, None)
 
 
-def list_packages(
+def list_packages_from_dir(
         from_dir: str,
         extension_split=True,
 ) -> (
@@ -97,7 +97,7 @@ def look_for_dependencies(
 
 
 if __name__ == "__main__":
-    pack_list_whl, pack_list_tar_gz = list_packages(from_dir=r"F:\...")
+    pack_list_whl, pack_list_tar_gz = list_packages_from_dir(from_dir=r"F:\...")
     # numpy 1.26.4
     # pandas 2.2.2
     # python_dateutil 2.9.0.post0

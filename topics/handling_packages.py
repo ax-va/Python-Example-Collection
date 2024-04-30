@@ -5,11 +5,11 @@ import johnnydep.cli
 from typing import Tuple, List, Dict
 from pprint import pprint
 
+# pattern to extract a name and version of a downloaded PyPI package
+PATTERN_NV = re.compile(r'^(.+?)[-_]([\d.]+(?:\.post\d+)?)(?:-.+)?\.(?:whl|tar\.gz)$')
 
-PATTERN = re.compile(r'^(.+?)[-_]([\d.]+(?:\.post\d+)?)(?:-.+)?\.(?:whl|tar\.gz)$')
 
-
-def parse_lib_and_ver(filename: str) -> Tuple[str, str] | Tuple[None, None]:
+def parse_name_and_version(filename: str) -> Tuple[str, str] | Tuple[None, None]:
     """
     Parses the name and version from filename.
     Args:
@@ -17,7 +17,7 @@ def parse_lib_and_ver(filename: str) -> Tuple[str, str] | Tuple[None, None]:
     Returns:
         (<package_name>, <package_version>) matching the pattern or (None, None)
     """
-    match = re.match(PATTERN, filename)
+    match = re.match(PATTERN_NV, filename)
     return (match.group(1), match.group(2)) if match else (None, None)
 
 
@@ -28,7 +28,7 @@ def list_packages_from_dir(
         Tuple[List[Tuple[str, str]], List[Tuple[str, str]]] | List[Tuple[str, str]]
 ):
     """
-    Reads packages from the directory.
+    Lists packages from the directory.
     Args:
         from_dir: directory that contains downloaded packages from PyPI
         extension_split: sets whether files should be split into .whl and .tar.gz
@@ -39,19 +39,19 @@ def list_packages_from_dir(
     pckgs_tar_gz = []
     pckgs = []
     for root, dirs, files in os.walk(from_dir):
-        for file in files:
-            pckg_name, pckg_ver = parse_lib_and_ver(file)
+        for filename in files:
+            pckg_name, pckg_ver = parse_name_and_version(filename)
             if (pckg_name, pckg_ver) == (None, None):
-                print(f"Found not a package: {file}")
+                print(f"Found not a package: {filename}")
             else:
                 print(pckg_name, pckg_ver)
                 if extension_split:
-                    if file.endswith(".whl"):
+                    if filename.endswith(".whl"):
                         pckgs_whl.append((pckg_name, pckg_ver))
-                    elif file.endswith(".tar.gz"):
+                    elif filename.endswith(".tar.gz"):
                         pckgs_tar_gz.append((pckg_name, pckg_ver))
                     else:
-                        raise ValueError(f"Unknown file extension: {file}")
+                        raise ValueError(f"Unknown file extension: {filename}")
                 else:
                     pckgs.append((pckg_name, pckg_ver))
 
@@ -68,7 +68,7 @@ def look_for_dependencies(
         package_list: List[Tuple[str, str]]
 ) -> Dict[Tuple[str, str], List[Tuple[str, str]]]:
     """
-    Finds dependencies of packages
+    Looks for dependencies of packages.
     Args:
         package_list: list of packages with entries (<package_name>, <package_version>)
     Returns:

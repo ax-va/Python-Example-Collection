@@ -1,10 +1,9 @@
 import io
 import os
 import re
-from pprint import pprint
-
 import johnnydep.cli
 from typing import Tuple, List, Dict
+from pprint import pprint
 
 
 PATTERN = re.compile(r'^(.+?)[-_]([\d.]+(?:\.post\d+)?)(?:-.+)?\.(?:whl|tar\.gz)$')

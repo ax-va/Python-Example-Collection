@@ -109,6 +109,7 @@ for pattern in test_patterns:
 # \S            any character that isn't a whitespace
 # \w            any word character, means alphanumeric plus underscores
 # \W            any character that is not a word character
+# \b            word boundary position
 # .             any character except a newline
 # []            a set of characters that are OR-coupled
 # \.            a dot
@@ -143,7 +144,6 @@ for pattern in patterns:
 # \W        -> ['#', '$', ' ', '\t', ' ', ' ', '\n', ' ', ' ']
 # .         -> ['#', '1', '$', '2', 'm', '_', ' ', 'M', '\t', ' ', 'ä', ' ', ' ', 'l', 'm', ' ', 'm', 'l']
 # [lmn]     -> ['m', 'l', 'm', 'm', 'l']
-# \b        -> word boundary position
 
 # # # or, groups, and complements
 
@@ -151,17 +151,17 @@ for pattern in patterns:
 # (abc)         "abc" as a group of characters to extract only it
 # [^a]          any character other than "a"
 
-re.findall(r"a|b", "a c d d b ab")
+re.findall(r"a|b", "a c d d b ab")  # Replace with [ab] for cleaner code
 # ['a', 'b', 'a', 'b']
 
 # equivalent
 re.findall(r"[ab]", "a c d d b ab")
 # ['a', 'b', 'a', 'b']
 
-re.findall(r"a|b", "c d d b")
+re.findall(r"a|b", "c d d b")  # Replace with [ab] for cleaner code
 #  ['b']
 
-re.findall(r"(a|b)", "c d d b")
+re.findall(r"(a|b)", "c d d b")  # Replace with ([ab]) for cleaner code
 # ['b']
 
 # equivalent
@@ -293,12 +293,12 @@ re.findall(r"h[ie]\w", "hi hey hello")
 
 # When the pattern has multiple groups, the item is a tuple.
 
-re.findall(r"(h|H)(i|e)", "Hey hello")
+re.findall(r"(h|H)(i|e)", "Hey hello")  # Replace with ([hH]) and ([ie]) for cleaner code
 #  [('H', 'e'), ('h', 'e')]
 
 # finditer              returns an iterator that yields the Match objects
 
-type(re.finditer(r"(h|H)(i|e)", "hi Hey hello"))
+type(re.finditer(r"(h|H)(i|e)", "hi Hey hello"))  # Replace with ([hH]) and ([ie]) for cleaner code
 # callable_iterator
 
 # split                 splits the string by the pattern

@@ -197,7 +197,7 @@ text = "word word wordword wordwordword word"
 pattern.findall(text)
 # ['word', 'word', 'word']
 
-# The difference between "search" and "match":
+# The difference between re.search() and re.match():
 # 1) re.search() searches for the first match anywhere in the string
 # 2) re.match() searches for matches from the beginning of a string
 

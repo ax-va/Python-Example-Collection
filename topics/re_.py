@@ -110,16 +110,26 @@ for pattern in test_patterns:
 # \w            any word character, means alphanumeric plus underscores
 # \W            any character that is not a word character
 # .             any character except a newline
-# []            a set of characters
+# []            a set of characters that are OR-coupled
+# \.            a dot
 
 # - individual characters: [abcxyz]
 # - a range of characters: [a-z], [A-Z]
 # - combined different ranges of characters: [a-dw-z]
 
-# For example, you could use
-# r'[\w\.-]+@gmail.com'
-# if you were searching for only Gmail addresses
-# (\. is for a dot).
+# The escape character \ for \. is redundant in []
+
+some_email = "ax-va.@gmail.com"
+print(re.search(r"[\w\-.]+", some_email))
+# <re.Match object; span=(0, 6), match='ax-va.'>
+print(re.findall(r"[\w\-.]+", some_email))
+# ['ax-va.', 'gmail.com']
+
+# Here in [], we use . for a dot instead of \.
+print(re.search(r"[.]+", some_email))
+# <re.Match object; span=(5, 6), match='.'>
+print(re.findall(r"[.]+", some_email))
+# ['.', '.']
 
 patterns = ["\d", "\D", "\s", "\S", "\w", "\W", ".", "[lmn]"]
 test_text = "#1$2m_ M\t ä \n lm ml"
@@ -138,7 +148,7 @@ for pattern in patterns:
 # # # or, groups, and complements
 
 # a|b           "a" or "b"
-# (abc)         "abc" as a group of characters
+# (abc)         "abc" as a group of characters to extract only it
 # [^a]          any character other than "a"
 
 re.findall(r"a|b", "a c d d b ab")
@@ -167,7 +177,7 @@ re.findall(r"(abc)", "ab bc ac")
 re.findall(r"[^a]", "abcde")
 # ['b', 'c', 'd', 'e']
 
-# [^(...)] and [^...^...]
+# Patterns [^(...)] and [^...^...]
 
 re.findall(r"[^(ab)]", "abcde")
 # ['c', 'd', 'e']
@@ -188,12 +198,20 @@ pattern.findall(text)
 # ['word', 'word', 'word']
 
 # The difference between "search" and "match":
+# 1) re.search() searches for the first match anywhere in the string
+# 2) re.match() searches for matches from the beginning of a string
 
 re.search(r"(\w\d)", "xyza2b1c3dd")
 # <re.Match object; span=(3, 5), match='a2'>
 
 re.match(r"(\w\d)", "xyza2b1c3dd")
 # None
+
+re.search(r"(\w\w)", "xyza2b1c3dd")
+# <re.Match object; span=(0, 2), match='xy'>
+
+re.match(r"(\w\w)", "xyza2b1c3dd")
+# <re.Match object; span=(0, 2), match='xy'>
 
 re.search(r"(\w\d)", "y1xyza2b1c3dd")
 # <re.Match object; span=(0, 2), match='y1'>

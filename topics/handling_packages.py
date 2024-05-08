@@ -6,7 +6,7 @@ from typing import Tuple, List, Dict
 from pprint import pprint
 
 # pattern to extract a name and version of a downloaded PyPI package
-PATTERN_NAME_AND_VERSION = re.compile(r'^(.+)-([\d.]+(?:post|dev)?\d*).*(?:whl|tar\.gz)$')
+NAME_AND_VERSION = re.compile(r'^(.+)-([\d.]+(?:post|dev)?\d*).*(?:whl|tar\.gz)$')
 
 
 def parse_name_and_version(filename: str) -> Tuple[str, str] | Tuple[None, None]:
@@ -17,7 +17,7 @@ def parse_name_and_version(filename: str) -> Tuple[str, str] | Tuple[None, None]
     Returns:
         (<package_name>, <package_version>) matching the pattern or (None, None)
     """
-    match = re.match(PATTERN_NAME_AND_VERSION, filename)
+    match = re.match(NAME_AND_VERSION, filename)
     return (match.group(1), match.group(2)) if match else (None, None)
 
 

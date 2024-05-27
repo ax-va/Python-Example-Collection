@@ -15,7 +15,7 @@ with open("key.pub", "w") as f:
 # the *minimum* to safely write a file
 with open("key.priv", "w") as f:
     # Set the file mode to 0o600 before writing the sensitive bits to avoid race conditions.
-    os.chmod( "key.priv", 0o600)
+    os.chmod("key.priv", 0o600)
     pkey.write_private_key(f)
 
 # This gives read and write permissions to the owner,

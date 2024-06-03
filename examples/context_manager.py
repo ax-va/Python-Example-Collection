@@ -3,7 +3,7 @@ The "with" statement and the context manager.
 
 Source:
 Alex Martelli, Anna Martelli Ravenscroft, Steve Holden, and Paul McGuire,
-"Python in a Nutshell: A Desktop Quick Reference", O'Reilly Media, 2023
+"Python in a Nutshell: A Desktop Quick Reference", Fourth Edition, O'Reilly Media, 2023
 
 See also:
 https://docs.python.org/3/library/contextlib.html

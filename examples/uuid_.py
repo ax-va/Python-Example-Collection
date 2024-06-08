@@ -1,3 +1,6 @@
+"""
+A UUID is a long string of alphanumeric characters that is unique worldwide.
+"""
 import uuid
 print(f"v_{uuid.uuid4().hex}")
 

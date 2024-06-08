@@ -1,5 +1,7 @@
 """
 Create a UUID value and then return the hex string version of that value that is unique worldwide.
+
+UUID = Universally Unique Identifier
 """
 from uuid import uuid4
 print(f"v_{uuid4().hex}")

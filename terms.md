@@ -1,5 +1,7 @@
 RAII = Resource acquisition is initialization
 
-Only write context manager classes with two special methods: `__enter__` and `__exit__`.
+Used in Python with the context manager with two special methods: `__enter__` and `__exit__`.
+
+UUID = Universally Unique Identifier
 
 

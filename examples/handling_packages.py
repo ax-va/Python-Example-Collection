@@ -120,50 +120,59 @@ def write_only_package_names(
 
 if __name__ == "__main__":
 
+    """
     write_only_package_names(
-        input_filename="...",
-        output_filename="...",
+        input_filename=r"...",
+        output_filename=r"...",
     )
+    """
 
-    # pack_list_whl, pack_list_tar_gz = list_packages_from_dir(from_dir=r"...")
-    # # numpy 1.26.4
-    # # pandas 2.2.2
-    # # python_dateutil 2.9.0.post0
-    # # pytz 2024.1
-    # # six 1.16.0
-    # # tzdata 2024.1
-    # # Found 6 .whl packages.
-    # # Found 0 .tar.gz packages.
-    # print(".whl:")
-    # # .whl:
-    # pprint(pack_list_whl)
-    # # [('numpy', '1.26.4'),
-    # #  ('pandas', '2.2.2'),
-    # #  ('python_dateutil', '2.9.0.post0'),
-    # #  ('pytz', '2024.1'),
-    # #  ('six', '1.16.0'),
-    # #  ('tzdata', '2024.1')]
-    # print(".tar.gz:")
-    # # .tar.gz:
-    # pprint(pack_list_tar_gz)
-    # # []
-    # dep_dict = look_for_dependencies(package_list=pack_list_whl)
-    # # Searching for dependencies of numpy
-    # # Searching for dependencies of pandas
-    # # Searching for dependencies of python_dateutil
-    # # Searching for dependencies of pytz
-    # # Searching for dependencies of six
-    # # Searching for dependencies of tzdata
-    # print("dependencies:")
-    # # dependencies:
-    # pprint(dep_dict)
-    # # {('numpy', '1.26.4'): [],
-    # #  ('pandas', '2.2.2'): [('numpy', '1.26.4'),
-    # #                        ('python_dateutil', '2.9.0.post0'),
-    # #                        ('pytz', '2024.1'),
-    # #                        ('tzdata', '2024.1'),
-    # #                        ('six', '1.16.0')],
-    # #  ('python_dateutil', '2.9.0.post0'): [('six', '1.16.0')],
-    # #  ('pytz', '2024.1'): [],
-    # #  ('six', '1.16.0'): [],
-    # #  ('tzdata', '2024.1'): []}
+    pack_list_whl, pack_list_tar_gz = list_packages_from_dir(from_dir=r"...")
+    # numpy 1.26.4
+    # pandas 2.2.2
+    # python_dateutil 2.9.0.post0
+    # pytz 2024.1
+    # six 1.16.0
+    # tzdata 2024.1
+    # Found 6 .whl packages.
+    # Found 0 .tar.gz packages.
+    print(".whl:")
+    # .whl:
+    pprint(pack_list_whl)
+    # [('numpy', '1.26.4'),
+    #  ('pandas', '2.2.2'),
+    #  ('python_dateutil', '2.9.0.post0'),
+    #  ('pytz', '2024.1'),
+    #  ('six', '1.16.0'),
+    #  ('tzdata', '2024.1')]
+    print(".tar.gz:")
+    # .tar.gz:
+    pprint(pack_list_tar_gz)
+    # []
+
+    pack_list_total = pack_list_whl + pack_list_tar_gz
+    with open(r"...", "w") as f:
+        f.write("\n".join([f"{pack[0]}=={pack[1]}" for pack in pack_list_total]))
+
+    """
+    dep_dict = look_for_dependencies(package_list=pack_list_whl)
+    # Searching for dependencies of numpy
+    # Searching for dependencies of pandas
+    # Searching for dependencies of python_dateutil
+    # Searching for dependencies of pytz
+    # Searching for dependencies of six
+    # Searching for dependencies of tzdata
+    print("dependencies:")
+    # dependencies:
+    pprint(dep_dict)
+    # {('numpy', '1.26.4'): [],
+    #  ('pandas', '2.2.2'): [('numpy', '1.26.4'),
+    #                        ('python_dateutil', '2.9.0.post0'),
+    #                        ('pytz', '2024.1'),
+    #                        ('tzdata', '2024.1'),
+    #                        ('six', '1.16.0')],
+    #  ('python_dateutil', '2.9.0.post0'): [('six', '1.16.0')],
+    #  ('pytz', '2024.1'): [],
+    #  ('six', '1.16.0'): [],
+    #  ('tzdata', '2024.1'): []}
+    """

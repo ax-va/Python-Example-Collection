@@ -1,6 +1,6 @@
 # Python-Example-Collection
 
-## Install using PyPI
+## Install using `pip`
 
 Create a virtual environment, activate it on POSIX systems, and install a package
 ```unix

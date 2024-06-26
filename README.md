@@ -2,7 +2,7 @@
 
 ## Install using PyPI
 
-Create a virtual environment, activate it on POSIX systems, and install `pytest`
+Create a virtual environment, activate it on POSIX systems, and install a package
 ```unix
 $ python3 -m venv venv_name
 $ source venv_name/bin/activate

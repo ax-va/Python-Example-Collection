@@ -1,9 +1,29 @@
-ORM = Object-Relational Mapping 
+**DRY = don't repeat yourself**
 
-RAII = Resource acquisition is initialization
+**ECDSA = Elliptic Curve Digital Signature Algorithm**
+
+**MRO = Method Resolution Order**
+
+MRO determines the sequence of inheritances of attributes and methods
+```python
+MyClass.__mro__
+```
+
+**nop = no operation**
+
+**ORM = Object-Relational Mapping** 
+
+**RAII = Resource acquisition is initialization**
 
 Used in Python with the context manager with two special methods: `__enter__` and `__exit__`.
 
-UUID = Universally Unique Identifier
+**SSH = Secure Shell Protocol**
 
+SSH is commonly used to remotely manage Unix systems.
 
+**UUID = Universally Unique Identifier**
+
+**YAGNI, YagNi = "You Aren't Gonna Need It"**
+
+"Always implement things when you actually need them, never when you just foresee that you need them" 
+https://c2.com/xp/YouArentGonnaNeedIt.html

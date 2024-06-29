@@ -2,6 +2,8 @@
 
 **ECDSA = Elliptic Curve Digital Signature Algorithm**
 
+**Monkey patch = a technique used to dynamically update the behavior of a piece of code at run-time**
+
 **MRO = Method Resolution Order**
 
 MRO determines the sequence of inheritances of attributes and methods

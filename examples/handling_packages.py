@@ -127,6 +127,7 @@ if __name__ == "__main__":
     )
     """
 
+    """
     pack_list_whl, pack_list_tar_gz = list_packages_from_dir(from_dir=r"...")
     # numpy 1.26.4
     # pandas 2.2.2
@@ -153,6 +154,20 @@ if __name__ == "__main__":
     pack_list_total = pack_list_whl + pack_list_tar_gz
     with open(r"...", "w") as f:
         f.write("\n".join([f"{pack[0]}=={pack[1]}" for pack in pack_list_total]))
+    """
+
+    requirements_filenames = [
+        r"...",
+    ]
+
+    lines = []
+    for requirements_filename in requirements_filenames:
+        with open(requirements_filename, "r") as f:
+            for line in f:
+                lines.append(line.strip() + "\n")
+
+    with open(r"...", "w") as f:
+        f.write("".join(sorted(lines, key=lambda x: re.sub(r"[#\s]+", "", x.lower()))))
 
     """
     dep_dict = look_for_dependencies(package_list=pack_list_whl)

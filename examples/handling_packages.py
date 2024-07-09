@@ -169,7 +169,6 @@ if __name__ == "__main__":
     with open(r"...", "w") as f:
         f.write("".join(sorted(lines, key=lambda x: re.sub(r"[#\s]+", "", x.lower()))))
 
-    """
     dep_dict = look_for_dependencies(package_list=pack_list_whl)
     # Searching for dependencies of numpy
     # Searching for dependencies of pandas
@@ -191,3 +190,7 @@ if __name__ == "__main__":
     #  ('six', '1.16.0'): [],
     #  ('tzdata', '2024.1'): []}
     """
+
+    pack_list_total = list_packages_from_dir(from_dir=r"...", extension_split=False)
+    with open(r"...", "w") as f:
+        f.write("\n".join([f"{pack[0]}=={pack[1]}" for pack in pack_list_total]))

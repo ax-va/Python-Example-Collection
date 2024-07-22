@@ -19,6 +19,8 @@ MyClass.__mro__
 
 Used in Python with the context manager with two special methods: `__enter__` and `__exit__`.
 
+**REST = Representational State Transfer**
+
 **SSH = Secure Shell Protocol**
 
 SSH is commonly used to remotely manage Unix systems.

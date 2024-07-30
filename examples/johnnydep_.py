@@ -30,3 +30,6 @@ pprint(deps[1:])
 #  ('pytz', '2024.1'),
 #  ('tzdata', '2024.1'),
 #  ('six', '1.16.0')]
+
+with open("deps.txt", "wt") as f:
+    f.write("\n".join(f"{p}=={v}" for p, v in deps[1:]))

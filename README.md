@@ -30,3 +30,7 @@ Activate in PowerShell
 C:>venv_name\Scripts\Activate.ps1
 ```
 
+## johnnydep
+```ubuntu
+$ johnnydep pandas==2.2.0 --verbose 0
+```

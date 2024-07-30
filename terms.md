@@ -27,6 +27,10 @@ Used in Python with the context manager with two special methods: `__enter__` an
 
 SSH is commonly used to remotely manage Unix systems.
 
+**structural duck typing**
+
+If an object walks like a duck and quacks like a duck, it's a duck, regardless of its actual inheritance hierarchy.
+
 **UUID = Universally Unique Identifier**
 
 **YAGNI, YagNi = "You Aren't Gonna Need It"**

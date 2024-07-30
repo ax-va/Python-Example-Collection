@@ -1,3 +1,5 @@
+**ABCs = abstract base classes**
+
 **DRY = don't repeat yourself**
 
 **ECDSA = Elliptic Curve Digital Signature Algorithm**

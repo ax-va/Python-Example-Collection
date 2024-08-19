@@ -185,6 +185,7 @@ if __name__ == "__main__":
         f.write("\n".join([f"{pack[0]}=={pack[1]}" for pack in pack_list_total]))
     """
 
+    """
     requirements_filenames = [
         r"...",
     ]
@@ -197,3 +198,4 @@ if __name__ == "__main__":
 
     with open(r"...", "w") as f:
         f.write("".join(sorted(lines, key=lambda x: re.sub(r"[#\s]+", "", x.lower()))))
+    """

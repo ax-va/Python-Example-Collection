@@ -10,29 +10,6 @@ IMPORT_PATTERN = re.compile(
     r"|([^\n]*import\s[^\n]+)"
 )
 
-text = """
-import re
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from numpy import array, mean
-from pandas import (
-    DataFrame,
-    Series,
-)
-
-# some code
-a = 1 + 2
-print(a)
-"""
-IMPORT_PATTERN.findall(text)
-# [('', '', 'import re'),
-#  ('', '', 'import numpy as np'),
-#  ('', '', 'import pandas as pd'),
-#  ('', '', 'import matplotlib.pyplot as plt'),
-#  ('', 'from numpy import array, mean', ''),
-#  ('from pandas import (\n    DataFrame,\n    Series,\n)', '', '')]
-
 imports = ""
 for root, dirs, files in os.walk(INPUT_DIR):
     for file in files:
@@ -49,7 +26,7 @@ for root, dirs, files in os.walk(INPUT_DIR):
                 content = f.read()
                 import_list = IMPORT_PATTERN.findall(content)
                 for entry in import_list:
-                    imports += "".join(entry) + "\n"
+                    imports += ("".join(entry)).strip() + "\n"
 
 
 with open(os.path.join(OUTPUT_DIR, "collected_imports.py"), "w", encoding="utf-8") as f:

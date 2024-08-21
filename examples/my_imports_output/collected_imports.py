@@ -12,6 +12,8 @@ from pandas import (
 )
 from os import path
 "We import SQLAlchemy not here"
+There is no import of a module.
+from math import sqrt
 
 # imports in 'my_imports_input/__init__.py':
 from . import script1

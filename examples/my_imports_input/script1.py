@@ -15,3 +15,12 @@ print(a)
 from os import path
 
 "We import SQLAlchemy not here"
+
+"""
+There is no import of a module.
+"""
+
+
+def foo():
+    from math import sqrt
+    sqrt(4)

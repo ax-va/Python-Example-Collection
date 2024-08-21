@@ -3,7 +3,11 @@ import re
 
 INPUT_DIR = r"my_imports_input"
 OUTPUT_DIR = r"my_imports_output"
-IMPORT_PATTERN = re.compile(r"([^\n]*from\s+\S+\s+import\s+\([^)]+\))|([^\n]*from\s+\S+\s+import\s+[^\n]+)|([^\n]*import\s[^\n]+)")
+IMPORT_PATTERN = re.compile(
+    r"([^\n]*from\s+\S+\s+import\s+\([^)]+\))"
+    r"|([^\n]*from\s+\S+\s+import\s+[^\n]+)"
+    r"|([^\n]*import\s[^\n]+)"
+)
 
 text = """
 import re

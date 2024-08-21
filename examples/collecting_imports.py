@@ -1,5 +1,6 @@
 import os
 import re
+import chardet
 
 INPUT_DIR = r"my_imports_input"
 OUTPUT_DIR = r"my_imports_output"
@@ -37,7 +38,13 @@ for root, dirs, files in os.walk(INPUT_DIR):
     for file in files:
         if file.endswith(".py"):
             filepath = os.path.join(root, file)
-            with open(filepath, "r") as f:
+            print("filepath:", filepath)
+            with open(filepath, 'rb') as f:
+                raw_data = f.read()
+                result = chardet.detect(raw_data)
+                encoding = result["encoding"]
+
+            with open(filepath, "r", encoding=encoding) as f:
                 imports += "\n# imports in '" + filepath + "':\n"
                 content = f.read()
                 import_list = IMPORT_PATTERN.findall(content)

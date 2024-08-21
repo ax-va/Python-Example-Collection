@@ -34,7 +34,7 @@ for root, dirs, files in os.walk(INPUT_DIR):
         if file.endswith(".py"):
             filepath = os.path.join(root, file)
             with open(filepath, "r") as f:
-                imports += "\n# imports in " + filepath + ":\n"
+                imports += "\n# imports in '" + filepath + "':\n"
                 content = f.read()
                 import_list = IMPORT_PATTERN.findall(content)
                 for entry in import_list:

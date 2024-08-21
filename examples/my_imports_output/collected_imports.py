@@ -1,6 +1,6 @@
 #-*- conding: utf-8 -*-
 
-# imports in my_imports_input/script1.py:
+# imports in 'my_imports_input/script1.py':
 import re
 import numpy as np
 import pandas as pd
@@ -12,12 +12,12 @@ from pandas import (
 )
 from os import path
 
-# imports in my_imports_input/__init__.py:
+# imports in 'my_imports_input/__init__.py':
 from . import script1
 # import typing
 
-# imports in my_imports_input/dir1/script2.py:
+# imports in 'my_imports_input/dir1/script2.py':
 import pathlib
 
-# imports in my_imports_input/dir1/__init__.py:
+# imports in 'my_imports_input/dir1/__init__.py':
 import script2

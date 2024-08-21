@@ -11,6 +11,7 @@ from pandas import (
     Series,
 )
 from os import path
+"We import SQLAlchemy not here"
 
 # imports in 'my_imports_input/__init__.py':
 from . import script1

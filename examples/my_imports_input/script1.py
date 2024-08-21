@@ -13,3 +13,5 @@ a = 1 + 2
 print(a)
 
 from os import path
+
+"We import SQLAlchemy not here"

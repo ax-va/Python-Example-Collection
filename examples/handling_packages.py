@@ -69,7 +69,7 @@ def get_dependencies(
         package_list: List[str] | List[Tuple[str, str]],
 ) -> Dict[Tuple[str, str], List[Tuple[str, str]]]:
     """
-    Looks for dependencies of packages.
+    Looks for dependencies of packages by using the johnnydep package.
     Args:
         package_list: list of packages' names or of (<package_name>, <package_version>)
     Returns:

@@ -109,10 +109,9 @@ def write_only_package_names(
         input_filename: input file with names and versions of packages
         output_filename: output file with only the package names
     """
-    package_names = []
     with open(input_filename, "r") as f:
-        for line in f:
-            package_names.append(line.split("==")[0].strip())
+        content = f.read()
+        package_names = re.findall(r"([^\n]+)==[^\n]+", content)
 
     with open(output_filename, "w") as f:
         f.write("\n".join(package_names))

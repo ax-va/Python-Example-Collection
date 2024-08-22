@@ -1,6 +1,7 @@
 import io
 import os
 import re
+
 import johnnydep.cli
 from typing import Tuple, List, Dict
 from pprint import pprint
@@ -64,37 +65,55 @@ def list_packages_from_dir(
         return pckgs
 
 
-def look_for_dependencies(
-        package_list: List[Tuple[str, str]]
+def get_dependencies(
+        package_list: List[str] | List[Tuple[str, str]],
 ) -> Dict[Tuple[str, str], List[Tuple[str, str]]]:
     """
     Looks for dependencies of packages.
     Args:
-        package_list: list of packages with entries (<package_name>, <package_version>)
+        package_list: list of packages' names or of (<package_name>, <package_version>)
     Returns:
         dictionary with dependencies
     """
+    if isinstance(package_list[0], str):
+        frmt = "without_versions"
+    elif isinstance(package_list[0][0], str) and isinstance(package_list[0][1], str):
+        frmt = "with_versions"
+    else:
+        raise ValueError("package_list is wrong")
+
     deps = {}
-    for pckg_name, pckg_ver in package_list:
+    index = 0
+    while index < len(package_list):
+        match frmt:
+            case "without_versions":
+                pckg_name, pckg_ver = package_list[index], ""
+            case "with_versions":
+                pckg_name, pckg_ver = package_list[index]
+
+        index += 1
         pckg_name = pckg_name.replace("_", "-")
-        string_io = io.StringIO()
-        print(f"Searching for dependencies of {pckg_name}")
-        johnnydep.cli.main(
-            argv=[f"{pckg_name}=={pckg_ver}", "-o" "pinned", "-v" "0"],
-            stdout=string_io,
-        )
+        pckg_name = pckg_name.lower()
 
-        pckg_deps = []
-        string_io.seek(0)  # Change the cursor position
-        for line in string_io:
-            line = line[:-1]
-            dep_pckg_name, dep_pckg_ver = line.split("==")  # --output-format pinned
-            dep_pckg_name = dep_pckg_name.replace("_", "-")
-            if dep_pckg_name != pckg_name:
-                pckg_deps.append((dep_pckg_name, dep_pckg_ver))
+        if pckg_name and not pckg_name.startswith("#"):
+            string_io = io.StringIO()
+            print(f"Searching for dependencies of {pckg_name}")
+            johnnydep.cli.main(
+                argv=[f"{pckg_name}=={pckg_ver}" if pckg_ver else f"{pckg_name}", "-o" "pinned", "-v" "0"],
+                stdout=string_io,
+            )
 
-        string_io.close()
-        deps[(pckg_name, pckg_ver)] = pckg_deps
+            pckg_deps = []
+            string_io.seek(0)  # Change the cursor position
+            for line in string_io:
+                line = line[:-1]  # Remove "\n"
+                dep_pckg_name, dep_pckg_ver = line.split("==")  # --output-format pinned
+                dep_pckg_name = dep_pckg_name.replace("_", "-")
+                if dep_pckg_name != pckg_name:
+                    pckg_deps.append((dep_pckg_name, dep_pckg_ver))
+
+            string_io.close()
+            deps[(pckg_name, pckg_ver or "latest_version")] = pckg_deps
     return deps
 
 
@@ -156,7 +175,13 @@ if __name__ == "__main__":
     """
 
     """
-    dep_dict = look_for_dependencies(package_list=pack_list_whl)
+    with open("...", "r") as f:
+        content = f.read()
+        pack_list = re.findall(r"([^\n]+)", content)
+    """
+
+    """
+    dep_dict = get_dependencies(package_list=pack_list)
     # Searching for dependencies of numpy
     # Searching for dependencies of pandas
     # Searching for dependencies of python_dateutil

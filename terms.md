@@ -23,6 +23,14 @@ Used in Python with the context manager with two special methods: `__enter__` an
 
 **REST = Representational State Transfer**
 
+**SOLID = set of five design principles proposed by Robert C. Martin**
+
+- Single responsibility principle
+- Open-closed principle
+- Liskov substitution principle
+- Interface segregation principle
+- Dependency inversion principle
+
 **SSH = Secure Shell Protocol**
 
 SSH is commonly used to remotely manage Unix systems.

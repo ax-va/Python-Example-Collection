@@ -9,6 +9,8 @@
 Mock objects are typically intended to be objects that are used in place of the real implementation.
 Mock objects are sometimes called test doubles, spies, fakes, or stubs.
 
+**Mock drift = the interface to be mocked changes, while the mock in the test code doesn't.**
+
 **Monkey patch = a technique used to dynamically update the behavior of a piece of code at run-time**
 
 **MRO = Method Resolution Order**

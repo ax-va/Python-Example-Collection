@@ -110,7 +110,7 @@ for pattern in test_patterns:
 # \w            any word character, means alphanumeric plus underscores
 # \W            any character that is not a word character
 # \b            word boundary position
-# .             any character except a newline
+# .             either any character except a newline or any character with using the `re.DOTALL` flag
 # []            a set of characters that are OR-coupled
 # \.            a dot
 

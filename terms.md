@@ -28,7 +28,15 @@ MyClass.__mro__
 
 **nop = no operation**
 
-**ORM = Object-Relational Mapping** 
+**ORM = Object-Relational Mapping**
+
+**pdb = Python debugger**
+
+It is part of the Python standard library.
+
+https://docs.python.org/3/library/pdb.html
+
+https://docs.python.org/3/library/pdb.html#debugger-commands
 
 **RAII = Resource acquisition is initialization**
 

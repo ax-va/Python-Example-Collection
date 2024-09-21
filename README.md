@@ -37,7 +37,6 @@ you make to the source code are immediately reflected without needing to reinsta
 
 Install from the current directory
 ```unix
-```unix
 (venv_editable) $ pip install -e .
 ```
 

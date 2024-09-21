@@ -46,7 +46,7 @@ Install with optional dependencies for testing
 (venv_editable) $ pip install -e "./cards_proj_failed/[test]"
 ```
 
-`[test]` in the `-e` parameters refers to optional dependencies for testing given in `pyproject.toml` as
+`[test]` in the `-e` parameters refers to optional dependencies for testing given in `pyproject.toml`.
 
 ## johnnydep
 ```ubuntu

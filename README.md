@@ -47,7 +47,24 @@ Install with optional dependencies for testing
 
 `[test]` in the `-e` parameters refers to optional dependencies for testing given in `pyproject.toml`.
 
+
+Install from GitHub
+```unix
+$ pip install git+https://github.com/okken/pytest-skip-slow
+```
+
+Install from `.whl`
+```unix
+$ pip install <package> --no-index --find-links=<path_to_packages>
+```
+
+Publish packages to PyPI
+
+https://packaging.python.org/en/latest/tutorials/packaging-projects/#uploading-the-distribution-archives
+
+https://flit.pypa.io/en/latest/upload.html#controlling-package-uploads
+
 ## johnnydep
-```ubuntu
+```unix
 $ johnnydep pandas==2.2.0 --verbose 0
 ```

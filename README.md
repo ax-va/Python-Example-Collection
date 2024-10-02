@@ -54,7 +54,7 @@ Install in editable mode from the current directory
 (venv_editable) ...$ pip install -e .
 ```
 
-Install with optional dependencies for testing
+Install in editable mode with optional dependencies for testing
 ```unix
 (venv_editable) ...$ pip install -e "./cards_proj_failed/[test]"
 ```

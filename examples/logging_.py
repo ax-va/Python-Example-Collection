@@ -17,7 +17,7 @@ logger0_good = logging.getLogger("task_app")
 logger1_good = logging.getLogger("task_app")
 assert logger0_good is logger1_good
 
-# best practice
+# best practice / best way
 logging.getLogger(__name__)
 
 # # # Use files to store application events

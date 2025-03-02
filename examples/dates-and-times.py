@@ -15,12 +15,16 @@ d.isoformat()
 
 # # # str to datetime
 
-# Make datetime.datetime using datetime.datetime.strptime
+# Make `datetime.datetime` using `datetime.datetime.strptime`
 d = datetime.strptime('2022-01-25 01:59:59.999', '%Y-%m-%d %H:%M:%S.%f')
 # datetime.datetime(2022, 1, 25, 1, 59, 59, 999000)
 
 d = datetime.strptime('20220125', '%Y%m%d')
 # datetime.datetime(2022, 1, 25, 0, 0)
+
+# Parse a date to `datetime.date`
+d = datetime.strptime('20220125', '%Y%m%d').date()
+# datetime.date(2022, 1, 25)
 
 d = datetime.strptime('2022012', '%Y%m%d')
 # datetime.datetime(2022, 1, 2, 0, 0)
@@ -31,7 +35,7 @@ d = datetime.strptime('2022012', '%Y%m%d')
 # d = datetime.strptime('2022012501', '%Y%m%d')
 # # ValueError: unconverted data remains: 01
 
-# Make datetime.datetime using dateutil.parser.parse
+# Make `datetime.datetime` using `dateutil.parser.parse`
 d = parser.parse('2022-01-25T22:55:44.738Z')
 # datetime.datetime(2022, 1, 25, 22, 55, 44, 738000, tzinfo=tzutc())
 
@@ -39,4 +43,3 @@ d = parser.parse('2022-01-25T22:55:44.738Z')
 
 datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
 # '2023-12-21 21:43:55.117894'
-

@@ -15,7 +15,7 @@ pd.set_option("display.colheader_justify", "left")
 # Set the option to display full column width
 pd.set_option("display.max_colwidth", None)
 
-# some examples
+# example 1
 
 def df_to_str(df: pd.DataFrame) -> str:
     """
@@ -55,6 +55,8 @@ def print_df(df: pd.DataFrame) -> None:
     """
     print(df_to_str(df))
 
+
+# example 2
 
 def print_full_df_content(func):
     """Use this decorator to print the full content of dataframe."""

@@ -1,26 +1,27 @@
 """
-F:
-|- dir1
-   |- dir2
-      |- file2.txt
-   file1.txt
+dir1
+|- dir2
+   |- file2.txt
+file1.txt
 """
 import os
 
-for root, dirs, files in os.walk(r"F:\dir1"):
+for root, dirs, files in os.walk("dir1"):
+    print("root:", root)
+    print("dirs:", dirs)
+    print("files:", files)
     for file in files:
-        print(root)
-        print(dirs)
-        print(file)
-        print(os.path.join(root, file))
-        print("-"*20)
-# F:\dir1
-# ['dir2']
-# file1.txt
-# F:\dir1\file1.txt
-# --------------------
-# F:\dir1\dir2
-# []
-# file2.txt
-# F:\dir1\dir2\file2.txt
-# --------------------
+        print("relative filepath:", repr(os.path.join(root, file)))
+    print("-" * 20)
+"""
+root: dir1
+dirs: ['dir2']
+files: ['file1.txt']
+relative filepath: 'dir1\\file1.txt'
+--------------------
+root: dir1\dir2
+dirs: []
+files: ['file2.txt']
+relative filepath: 'dir1\\dir2\\file2.txt'
+--------------------
+"""

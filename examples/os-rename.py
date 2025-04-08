@@ -4,6 +4,6 @@ import os
 directory = "./matplotlib-examples"
 
 for filename in os.listdir(directory):
-	filepath = os.path.join(directory, filename)
-	if os.path.isfile(filepath):
-		os.rename(filepath, filepath.replace("example-", ""))
+    filepath = os.path.join(directory, filename)
+    if os.path.isfile(filepath):
+        os.rename(filepath, filepath.replace("example-", ""))

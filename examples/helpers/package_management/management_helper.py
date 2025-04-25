@@ -8,7 +8,7 @@ import johnnydep.cli
 from typing import Tuple, List, Dict
 
 # pattern to extract a name and version of a downloaded PyPI package
-NAME_AND_VERSION_PATTERN = re.compile(r"^(.+)-([\d.]+(?:post|dev)?\d*).*(?:whl|tar\.gz)$")
+DOWNLOADED_PACKAGE_FILENAME_PATTERN = re.compile(r"^(.+)-([\d.]+(?:post|dev)?\d*).*(?:whl|tar\.gz)$")
 
 
 def parse_name_and_version(filename: str) -> Tuple[str, str] | Tuple[None, None]:
@@ -19,7 +19,7 @@ def parse_name_and_version(filename: str) -> Tuple[str, str] | Tuple[None, None]
     Returns:
         (<package_name>, <package_version>) matching the pattern or (None, None)
     """
-    match = re.match(NAME_AND_VERSION_PATTERN, filename)
+    match = re.match(DOWNLOADED_PACKAGE_FILENAME_PATTERN, filename)
     return (match.group(1), match.group(2)) if match else (None, None)
 
 

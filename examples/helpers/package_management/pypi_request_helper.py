@@ -1,6 +1,5 @@
 """
-This module offers helper functions for requesting PyPI
- to obtain information about packages.
+This module offers helper functions for requesting PyPI to obtain information about packages.
 """
 import re
 import requests

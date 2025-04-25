@@ -39,7 +39,7 @@ def write_package_info_to_file(
                     match_group1 = match.group(1)
                     match_group2 = match.group(2)
                     match_group3 = match.group(3)
-                    if match_group1:
+                    if match_group1 and match_group2:
                         package_name = match_group1
                         logger.info(f"PACKAGE: {package_name}")
                         package_version = match_group2

@@ -23,11 +23,11 @@
     Edit `pyproject.toml` and add something like:
     ```
     [tool.poetry.dependencies]
-    python = "^3.10"
+    python = "^3.12"
     
     [tool.poetry.group.dev.dependencies]
     pytest = "^8.0"
-    ruff = "^0.6.9"
+    ruff = "^0.12.0"
     ```
 
 4. Install with Poetry

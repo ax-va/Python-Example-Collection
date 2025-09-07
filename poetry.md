@@ -1,7 +1,7 @@
 1. Install Poetry (once on your system)
 
     Best practice is via pipx so it stays isolated:
-    ```
+    ```unix
     $ python -m pip install --<username> pipx
     $ pipx ensurepath
     $ pipx install poetry
@@ -12,8 +12,8 @@
 2. Initialize Poetry in your project
 
     From the root of your project (where `pyproject.toml` already exists):
-    ```
-    poetry init
+    ```unix
+    $ poetry init
     ```
 
     This asks a few questions about your project and creates a `[tool.poetry]` section in your `pyproject.toml`.
@@ -21,7 +21,7 @@
 3. Declare Python version & dependencies
 
     Edit `pyproject.toml` and add something like:
-    ```
+    ```toml
     [tool.poetry.dependencies]
     python = "^3.12"
     
@@ -33,14 +33,14 @@
 4. Install with Poetry
 
     Poetry will create its own virtualenv (separate from the one you manually made):
-    ```
+    ```unix
     $ poetry install --with dev
     ```
     
     Then use tools via:
-    ```
-    poetry run pytest
-    poetry run ruff check
+    ```unix
+    $ poetry run pytest
+    $ poetry run ruff check
     ```
 
 5. (Optional) Deactivate old venv

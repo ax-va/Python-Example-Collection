@@ -44,5 +44,5 @@ pytest
 ```
 and install with:
 ```
-pip install -r requirements-dev.txt
+$ pip install -r requirements-dev.txt
 ```

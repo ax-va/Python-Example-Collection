@@ -45,6 +45,6 @@
 
 5. (Optional) Deactivate old venv
 
-    Once Poetry manages everything, you don't need the old venv/ you created with `$ python -m venv`. You can delete it if you like.
+    Once Poetry manages everything, you don't need the old venv you created with `$ python -m venv`. You can delete it if you like.
     
     Poetry will now handle both your runtime and dev-only dependencies cleanly, and you can stop juggling pip install manually.

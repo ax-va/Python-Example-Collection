@@ -2,12 +2,12 @@
 
     Best practice is via pipx so it stays isolated:
     ```unix
-    $ python -m pip install --<username> pipx
+    $ python -m pip install --user pipx
     $ pipx ensurepath
     $ pipx install poetry
     ```
     
-    If you don't want pipx, you can also pip install `--<username> poetry`, but pipx is cleaner.
+    If you don't want pipx, you can also pip install `--user poetry`, but pipx is cleaner.
 
 2. Initialize Poetry in your project
 

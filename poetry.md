@@ -18,7 +18,7 @@
 
     This asks a few questions about your project and creates a `[tool.poetry]` section in your `pyproject.toml`.
 
-3. Declare Python version & dependencies
+3. Declare Python version and dependencies
 
     Edit `pyproject.toml` and add something like:
     ```toml

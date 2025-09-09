@@ -18,7 +18,7 @@
 
     This asks a few questions about your project and creates a `[tool.poetry]` section in your `pyproject.toml`.
 
-3. Declare Python version & dependencies
+3. Declare Python version and dependencies
 
     Edit `pyproject.toml` and add something like:
     ```toml
@@ -45,6 +45,6 @@
 
 5. (Optional) Deactivate old venv
 
-    Once Poetry manages everything, you don't need the old venv/ you created with `$ python -m venv`. You can delete it if you like.
+    Once Poetry manages everything, you don't need the old venv you created with `$ python -m venv`. You can delete it if you like.
     
     Poetry will now handle both your runtime and dev-only dependencies cleanly, and you can stop juggling pip install manually.

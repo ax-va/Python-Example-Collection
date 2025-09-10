@@ -2,11 +2,11 @@
 
 ## Snyk
 
-- https://snyk.io/advisor/python/poetry 88/100
+- https://snyk.io/advisor/python/poetry 88/100 (2025-09-10)
 
-- https://snyk.io/advisor/python/pdm 94/100
+- https://snyk.io/advisor/python/pdm 94/100 (2025-09-10)
 
-- https://snyk.io/advisor/python/hatch 79/100
+- https://snyk.io/advisor/python/hatch 79/100 (2025-09-10)
 
 ## Dependencies
 

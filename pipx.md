@@ -1,3 +1,7 @@
+# pipx
+
+## Summary
+
 - **pipx is designed for Python programs (e.g., formatters, linters) that you run from the command line.** Each tool is installed into its own virtual environment. The tools are globally available, fully isolated, and free of conflicts.
 
 - **According to the official Poetry documentation, pipx is a recommended way to install Poetry.** This installs Poetry as a standalone, globally available command-line application—cleanly isolated in a virtual environment—ideal for avoiding conflicts with other Python projects. pipx automatically creates its own virtual environment for Poetry, so you can use the `poetry` command system-wide without manually activating environments.

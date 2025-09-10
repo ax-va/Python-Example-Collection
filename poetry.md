@@ -1,5 +1,9 @@
 # Poetry
 
+## Snyk
+
+- https://snyk.io/advisor/python/poetry 88/100 (2025-09-10)
+
 ## Installation
 
 1. Install Poetry (once on your system)

@@ -1,5 +1,9 @@
 # pipx
 
+## Snyk
+
+- https://snyk.io/advisor/python/pipx 93/100 (2025-09-10)
+
 ## Summary
 
 - **pipx is designed for Python programs (e.g., formatters, linters) that you run from the command line.** Each tool is installed into its own virtual environment. The tools are globally available, fully isolated, and free of conflicts.

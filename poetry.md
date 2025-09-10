@@ -1,3 +1,7 @@
+# Poetry
+
+## Installation
+
 1. Install Poetry (once on your system)
 
     Best practice is via pipx so it stays isolated:

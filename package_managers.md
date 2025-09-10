@@ -1,5 +1,15 @@
 # Package Managers
 
+## Snyk
+
+- https://snyk.io/advisor/python/poetry 88/100
+
+- https://snyk.io/advisor/python/pdm 94/100
+
+- https://snyk.io/advisor/python/hatch 79/100
+
+## Dependencies
+
 - If you use Poetry:
     ```toml
     [tool.poetry.dependencies]

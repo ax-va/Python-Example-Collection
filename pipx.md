@@ -23,7 +23,7 @@ Either Python 3.11 must already be installed on the system, or you must use the 
 
 ```unix
 $ pipx install poetry \
-  --index-url "https://__token__:<TOKEN>@gitlab.my_company.cloud/api/v4/projects/1792/packages/pypi/simple" \
-  --pip-args="--proxy http://company_proxy --no-cache-dir" \
+  --index-url "https://__token__:<TOKEN>@gitlab.your_company.cloud/api/v4/projects/1792/packages/pypi/simple" \
+  --pip-args="--proxy http://your_company_proxy --no-cache-dir" \
   --python 3.11   # optional
 ```

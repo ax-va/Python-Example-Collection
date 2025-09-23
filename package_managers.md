@@ -2,7 +2,7 @@
 
 ## Snyk
 
-- https://snyk.io/advisor/python/poetry 88/100 (2025-09-10)
+- https://snyk.io/advisor/python/poetry 88/100 (2025-09-10), 94/100 (2025-09-23)
 
 - https://snyk.io/advisor/python/pdm 94/100 (2025-09-10)
 

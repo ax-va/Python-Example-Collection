@@ -1,9 +1,11 @@
 import os
 
-# This script should be in the same directory as the `matplotlib-examples` subdirectory
-directory = "./matplotlib-examples"
+dir = r"..."
 
-for filename in os.listdir(directory):
-    filepath = os.path.join(directory, filename)
-    if os.path.isfile(filepath):
-        os.rename(filepath, filepath.replace("example-", ""))
+# `os.listdir(dir)` returns all entries inside `dir`:
+# files, directories, symlinks, etc. - without distinguishing between them.
+
+for entry in os.listdir(dir):
+    entry_path = os.path.join(dir, entry)
+    if os.path.isfile(entry_path):
+        os.rename(entry_path, entry_path.replace("old_name", "new_name"))

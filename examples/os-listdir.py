@@ -2,7 +2,7 @@ import os
 
 dir = r"..."
 
-# `os.listdir(dir)` returns all entries inside dir:
+# `os.listdir(dir)` returns all entries inside `dir`:
 # files, directories, symlinks, etc. - without distinguishing between them.
 
 for l1_entry in os.listdir(dir):
